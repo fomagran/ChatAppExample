@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -22,11 +23,24 @@ class LoginViewController: UIViewController {
 
     @IBAction func tapRegisterButton(_ sender: Any) {
         dismissKeyboard()
+        if emailTF.text != "" && passwordTF.text != "" && repeatTF.text != ""{
+            if passwordTF.text == repeatTF.text {
+                registerUser()
+            }else{
+                ProgressHUD.showError("Passwords don't match")
+            }
+        }else{
+            ProgressHUD.showError("Email and Password is missing")
+        }
     }
     @IBAction func tapLoginButton(_ sender: Any) {
         dismissKeyboard()
+        if emailTF.text != "" && passwordTF.text != ""{
+            loginUser()
+        }else{
+            ProgressHUD.showError("All fields are required")
+        }
     }
-    
     
     /*스토리보드에 탭 제스쳐 레코그나이저 만들어서
      연결하면 따로 키보드 내리거나 그런거 설정할 일 없음.
@@ -34,6 +48,24 @@ class LoginViewController: UIViewController {
     @IBAction func tapBackgorund(_ sender: Any) {
         dismissKeyboard()
     }
+    
+    func loginUser() {
+        ProgressHUD.show("Login...")
+        FUser.loginUserWith(email: emailTF.text!
+                            , password: passwordTF.text!) { (error) in
+            if error != nil {
+                ProgressHUD.showError(error.debugDescription)
+                return
+            }
+            self.goToApp()
+        }
+    }
+    
+    func registerUser(){
+        
+    }
+    
+    
     
     func dismissKeyboard() {
         self.view.endEditing(false)
@@ -43,6 +75,13 @@ class LoginViewController: UIViewController {
         emailTF.text = ""
         passwordTF.text = ""
         repeatTF.text = ""
+    }
+    
+    func goToApp(){
+        ProgressHUD.dismiss()
+        cleanTextFields()
+        dismissKeyboard()
+        
     }
 
 }
