@@ -20,6 +20,18 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
        
     }
+    
+    //MARK:Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showRegisterViewController" {
+            let vc = segue.destination as! RegisterViewController
+            
+            vc.email = emailTF.text ?? ""
+            vc.password = passwordTF.text ?? ""
+            
+        }
+    }
 
     @IBAction func tapRegisterButton(_ sender: Any) {
         dismissKeyboard()
@@ -62,7 +74,9 @@ class LoginViewController: UIViewController {
     }
     
     func registerUser(){
-        
+        performSegue(withIdentifier: "showRegisterViewController", sender: nil)
+        cleanTextFields()
+        dismissKeyboard()
     }
     
     
@@ -83,6 +97,7 @@ class LoginViewController: UIViewController {
         dismissKeyboard()
         
     }
+    
 
 }
 
