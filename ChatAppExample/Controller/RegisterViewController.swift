@@ -77,6 +77,8 @@ class RegisterViewController: UIViewController {
     }
     
     func goToApp(){
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [kUSERID:FUser.currentId()])
+        
         let tabBarVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "TabBarViewController") as! UITabBarController
         
         self.present(tabBarVC, animated: true, completion: nil)

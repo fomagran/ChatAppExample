@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
         FUser.loginUserWith(email: emailTF.text!
                             , password: passwordTF.text!) { (error) in
             if error != nil {
-                ProgressHUD.showError(error.debugDescription)
+                ProgressHUD.showError("There is No User")
                 return
             }
             self.goToApp()
@@ -92,6 +92,8 @@ class LoginViewController: UIViewController {
     }
     
     func goToApp(){
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [kUSERID:FUser.currentId()])
+        
         ProgressHUD.dismiss()
         cleanTextFields()
         dismissKeyboard()
