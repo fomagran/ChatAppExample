@@ -72,7 +72,14 @@ class RegisterViewController: UIViewController {
                 return
             }
             ProgressHUD.dismiss()
+            self.goToApp()
         }
+    }
+    
+    func goToApp(){
+        let tabBarVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "TabBarViewController") as! UITabBarController
+        
+        self.present(tabBarVC, animated: true, completion: nil)
     }
     
  
