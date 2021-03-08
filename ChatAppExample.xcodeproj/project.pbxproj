@@ -20,6 +20,7 @@
 		04B1480525EF36E50072442C /* ChatAppExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B1480425EF36E50072442C /* ChatAppExampleTests.swift */; };
 		04B1481025EF36E50072442C /* ChatAppExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B1480F25EF36E50072442C /* ChatAppExampleUITests.swift */; };
 		04B1482425EF37900072442C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04B1482325EF37900072442C /* GoogleService-Info.plist */; };
+		04C52B9C25F5CB3600DA44F5 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C52B9B25F5CB3600DA44F5 /* SettingTableViewController.swift */; };
 		04DA075125F0836600DE6232 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA075025F0836600DE6232 /* RegisterViewController.swift */; };
 		2E6F7C0D49B3430F017A3D9D /* Pods_ChatAppExample_ChatAppExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D4EA744EBED0EFB8E6E9C1 /* Pods_ChatAppExample_ChatAppExampleUITests.framework */; };
 		6CDCA85677B181EA186C9BF4 /* Pods_ChatAppExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44F7946701B6193F61D87070 /* Pods_ChatAppExampleTests.framework */; };
@@ -63,6 +64,7 @@
 		04B1480F25EF36E50072442C /* ChatAppExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppExampleUITests.swift; sourceTree = "<group>"; };
 		04B1481125EF36E50072442C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04B1482325EF37900072442C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		04C52B9B25F5CB3600DA44F5 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		04DA075025F0836600DE6232 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		0DB540B29B052CFE8A0BF260 /* Pods-ChatAppExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatAppExampleTests.release.xcconfig"; path = "Target Support Files/Pods-ChatAppExampleTests/Pods-ChatAppExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		2DB94E566E5C6C0D17C9FA64 /* Pods-ChatAppExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatAppExample.debug.xcconfig"; path = "Target Support Files/Pods-ChatAppExample/Pods-ChatAppExample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			children = (
 				04B147F125EF36E30072442C /* LoginViewController.swift */,
 				04DA075025F0836600DE6232 /* RegisterViewController.swift */,
+				04C52B9B25F5CB3600DA44F5 /* SettingTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				04DA075125F0836600DE6232 /* RegisterViewController.swift in Sources */,
 				04B147EE25EF36E30072442C /* AppDelegate.swift in Sources */,
 				0498DBB425EF3B5000C8212D /* FcollectionRefrence.swift in Sources */,
+				04C52B9C25F5CB3600DA44F5 /* SettingTableViewController.swift in Sources */,
 				04B147F025EF36E30072442C /* SceneDelegate.swift in Sources */,
 				0498DBB925EF3C0000C8212D /* Constants.swift in Sources */,
 			);

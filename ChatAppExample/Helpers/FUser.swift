@@ -310,7 +310,7 @@ class FUser {
 
 func saveUserToFirestore(fUser: FUser) {
     reference(.User).document(fUser.objectId).setData(userDictionaryFrom(user: fUser) as! [String : Any]) { (error) in
-        
+
         print("error is \(error?.localizedDescription)")
     }
 }
@@ -331,11 +331,10 @@ func fetchCurrentUserFromFirestore(userId: String) {
     reference(.User).document(userId).getDocument { (snapshot, error) in
         
         guard let snapshot = snapshot else {  return }
-        
         if snapshot.exists {
             print("updated current users param")
             
-            UserDefaults.standard.setValue(snapshot.data() as! NSDictionary, forKeyPath: kCURRENTUSER)
+            UserDefaults.standard.setValue(snapshot.data()! as NSDictionary, forKeyPath: kCURRENTUSER)
             UserDefaults.standard.synchronize()
             
         }

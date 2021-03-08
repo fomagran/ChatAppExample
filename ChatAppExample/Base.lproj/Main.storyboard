@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="Bcw-sT-Ytc">
             <objects>
-                <viewController id="Iec-IH-hEA" customClass="LoginViewController" customModule="ChatAppExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Iec-IH-hEA" customClass="LoginViewController" customModule="ChatAppExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0kg-1U-7Kc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -181,22 +181,6 @@
             </objects>
             <point key="canvasLocation" x="1902.8985507246377" y="66.964285714285708"/>
         </scene>
-        <!--Setting-->
-        <scene sceneID="Zwx-Zc-K5u">
-            <objects>
-                <viewController id="qah-Aj-OFP" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="y0r-PR-yUU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="g8y-sq-472"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Setting" image="settings" id="hjO-xX-sgd"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Nl-Jz-ht9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3535" y="385"/>
-        </scene>
         <!--Call-->
         <scene sceneID="XAF-ti-Gi9">
             <objects>
@@ -224,7 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2NL-dy-RFg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3535" y="-221"/>
+            <point key="canvasLocation" x="3535" y="-268"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Fmg-Nh-Lhj">
@@ -237,17 +221,81 @@
                     </tabBar>
                     <connections>
                         <segue destination="w9x-Cb-axy" kind="relationship" relationship="viewControllers" id="dBp-Hl-FGq"/>
-                        <segue destination="qah-Aj-OFP" kind="relationship" relationship="viewControllers" id="HmS-p3-LYN"/>
+                        <segue destination="lNL-lg-Mr7" kind="relationship" relationship="viewControllers" id="4QQ-hJ-wzN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gwo-sY-Q0N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2648" y="67"/>
         </scene>
+        <!--Setting-->
+        <scene sceneID="xSI-yT-t00">
+            <objects>
+                <tableViewController id="lNL-lg-Mr7" customClass="SettingTableViewController" customModule="ChatAppExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7dC-97-Unu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="8ox-py-Kaz">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="zQn-cM-ifT">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zQn-cM-ifT" id="DIc-s2-vFD">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="to4-F6-VSU">
+                                        <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="to4-F6-VSU" id="b9s-gF-rIp">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2f4-te-hPt">
+                                                    <rect key="frame" x="10" y="7" width="394" height="30"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Log Out"/>
+                                                    <connections>
+                                                        <action selector="tapLogOutButton:" destination="lNL-lg-Mr7" eventType="touchUpInside" id="6NA-zE-1sH"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2f4-te-hPt" firstAttribute="centerY" secondItem="b9s-gF-rIp" secondAttribute="centerY" id="7am-7O-NPW"/>
+                                                <constraint firstItem="2f4-te-hPt" firstAttribute="leading" secondItem="b9s-gF-rIp" secondAttribute="leading" constant="10" id="RRb-3Z-W5p"/>
+                                                <constraint firstAttribute="trailing" secondItem="2f4-te-hPt" secondAttribute="trailing" constant="10" id="hum-rj-9ds"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vzH-em-CRQ">
+                                        <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vzH-em-CRQ" id="kCX-gI-vRz">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="lNL-lg-Mr7" id="pmX-4A-LFu"/>
+                            <outlet property="delegate" destination="lNL-lg-Mr7" id="XxQ-oY-atn"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Setting" image="settings" id="aIE-f9-bMd"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tcW-rf-qZt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3535" y="388"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="3tw-60-eQe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cdg-z6-b39" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="cdg-z6-b39" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fIT-6u-uQM">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

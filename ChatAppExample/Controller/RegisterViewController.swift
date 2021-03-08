@@ -81,7 +81,7 @@ class RegisterViewController: UIViewController {
         
         let tabBarVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "TabBarViewController") as! UITabBarController
         
-        self.present(tabBarVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(tabBarVC, animated: true)
     }
     
  
