@@ -14,9 +14,15 @@ class UserTableViewCell: UITableViewCell {
     
     var indexpath:IndexPath!
     
+    let tap = UITapGestureRecognizer()
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        tap.addTarget(self, action: #selector(self.avatarTap))
+        avatar.isUserInteractionEnabled = true
+        avatar.addGestureRecognizer(tap)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,5 +46,10 @@ class UserTableViewCell: UITableViewCell {
         }
         
     }
+    
+    @objc func avatarTap() {
+        
+    }
+    
 
 }
