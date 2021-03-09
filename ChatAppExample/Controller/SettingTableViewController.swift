@@ -11,8 +11,8 @@ class SettingTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
- 
+
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     // MARK: - Table view data source
@@ -40,7 +40,10 @@ class SettingTableViewController: UITableViewController {
     
     func showLoginView(){
         
-        self.navigationController?.popViewController(animated: true)
+        let loginVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "LoginViewController") as! LoginViewController
+        let nav = UINavigationController.init(rootViewController: loginVC)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
    
     }
 

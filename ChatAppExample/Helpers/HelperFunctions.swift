@@ -44,3 +44,12 @@ func imageFromInitials(firstName:String?,lastName:String?,withBlock:@escaping (_
     UIGraphicsEndImageContext()
     withBlock(img!)
 }
+
+//문자열로 된 이미지 정보를 이미지로 디코딩해준다.
+func imageFromData(imageData:String,completion: (_ image:UIImage?) -> Void) {
+    var image:UIImage?
+    let decodedData = NSData(base64Encoded: imageData, options: NSData.Base64DecodingOptions(rawValue: 0))
+    image = UIImage(data: decodedData! as Data)
+    completion(image)
+}
+

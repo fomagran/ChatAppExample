@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0456B20F25F70462009F84BF /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B20E25F70462009F84BF /* UserTableViewCell.swift */; };
+		0456B21725F7068E009F84BF /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B21625F7068E009F84BF /* HelperExtensions.swift */; };
 		0498DBAF25EF398E00C8212D /* FUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498DBAE25EF398E00C8212D /* FUser.swift */; };
 		0498DBB425EF3B5000C8212D /* FcollectionRefrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498DBB325EF3B5000C8212D /* FcollectionRefrence.swift */; };
 		0498DBB925EF3C0000C8212D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498DBB825EF3C0000C8212D /* Constants.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0456B20E25F70462009F84BF /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		0456B21625F7068E009F84BF /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		0498DBAE25EF398E00C8212D /* FUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
 		0498DBB325EF3B5000C8212D /* FcollectionRefrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcollectionRefrence.swift; sourceTree = "<group>"; };
 		0498DBB825EF3C0000C8212D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -105,6 +109,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0456B20D25F70451009F84BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0456B20E25F70462009F84BF /* UserTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		04B147E125EF36E30072442C = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +142,7 @@
 		04B147EC25EF36E30072442C /* ChatAppExample */ = {
 			isa = PBXGroup;
 			children = (
+				0456B20D25F70451009F84BF /* View */,
 				04DA075625F0839B00DE6232 /* Controller */,
 				04DA075525F0838700DE6232 /* Helpers */,
 				04B147ED25EF36E30072442C /* AppDelegate.swift */,
@@ -168,6 +181,7 @@
 				0498DBB325EF3B5000C8212D /* FcollectionRefrence.swift */,
 				0498DBB825EF3C0000C8212D /* Constants.swift */,
 				0498DBBD25EF3CD700C8212D /* HelperFunctions.swift */,
+				0456B21625F7068E009F84BF /* HelperExtensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -445,9 +459,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0498DBBE25EF3CD700C8212D /* HelperFunctions.swift in Sources */,
+				0456B21725F7068E009F84BF /* HelperExtensions.swift in Sources */,
 				04B147F225EF36E30072442C /* LoginViewController.swift in Sources */,
 				0498DBAF25EF398E00C8212D /* FUser.swift in Sources */,
 				04DA075125F0836600DE6232 /* RegisterViewController.swift in Sources */,
+				0456B20F25F70462009F84BF /* UserTableViewCell.swift in Sources */,
 				04B147EE25EF36E30072442C /* AppDelegate.swift in Sources */,
 				0498DBB425EF3B5000C8212D /* FcollectionRefrence.swift in Sources */,
 				04C52B9C25F5CB3600DA44F5 /* SettingTableViewController.swift in Sources */,
