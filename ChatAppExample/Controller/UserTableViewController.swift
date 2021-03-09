@@ -73,6 +73,18 @@ class UserTableViewController: UITableViewController,UISearchResultsUpdating {
         }
     }
     
+    @IBAction func filterBySegment(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex{
+        case 0:
+            loadUsers(filter: kCITY)
+        case 1:
+            loadUsers(filter: kCOUNTRY)
+        case 2:
+            loadUsers(filter: "")
+        default:
+            return
+        }
+    }
     func filterContentForSearchText(searchText:String,scope:String = "All") {
         filteredUsers = allUsers.filter{$0.firstname.lowercased().contains(searchText.lowercased())}
         tableView.reloadData()
@@ -90,7 +102,7 @@ class UserTableViewController: UITableViewController,UISearchResultsUpdating {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      
+     
         return allUsers.count
     }
     
