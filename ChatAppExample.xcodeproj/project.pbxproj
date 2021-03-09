@@ -11,6 +11,7 @@
 		0456B21725F7068E009F84BF /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B21625F7068E009F84BF /* HelperExtensions.swift */; };
 		0456B21C25F70A21009F84BF /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B21B25F70A21009F84BF /* UserTableViewController.swift */; };
 		0456B22125F70EEA009F84BF /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B22025F70EEA009F84BF /* ChatsViewController.swift */; };
+		0456B22625F71AA1009F84BF /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B22525F71AA1009F84BF /* ProfileTableViewController.swift */; };
 		0498DBAF25EF398E00C8212D /* FUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498DBAE25EF398E00C8212D /* FUser.swift */; };
 		0498DBB425EF3B5000C8212D /* FcollectionRefrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498DBB325EF3B5000C8212D /* FcollectionRefrence.swift */; };
 		0498DBB925EF3C0000C8212D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498DBB825EF3C0000C8212D /* Constants.swift */; };
@@ -53,6 +54,7 @@
 		0456B21625F7068E009F84BF /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		0456B21B25F70A21009F84BF /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		0456B22025F70EEA009F84BF /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		0456B22525F71AA1009F84BF /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		0498DBAE25EF398E00C8212D /* FUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
 		0498DBB325EF3B5000C8212D /* FcollectionRefrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcollectionRefrence.swift; sourceTree = "<group>"; };
 		0498DBB825EF3C0000C8212D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				04C52B9B25F5CB3600DA44F5 /* SettingTableViewController.swift */,
 				0456B21B25F70A21009F84BF /* UserTableViewController.swift */,
 				0456B22025F70EEA009F84BF /* ChatsViewController.swift */,
+				0456B22525F71AA1009F84BF /* ProfileTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0456B22625F71AA1009F84BF /* ProfileTableViewController.swift in Sources */,
 				0498DBBE25EF3CD700C8212D /* HelperFunctions.swift in Sources */,
 				0456B21725F7068E009F84BF /* HelperExtensions.swift in Sources */,
 				04B147F225EF36E30072442C /* LoginViewController.swift in Sources */,
