@@ -24,6 +24,21 @@ class ProfileTableViewController: UITableViewController {
     }
 
     @IBAction func tapBlockButton(_ sender: Any) {
+        var currentBlockedIds = FUser.currentUser()!.blockedUsers
+        if currentBlockedIds.contains(user!.objectId) {
+            let index = currentBlockedIds.firstIndex(of:user!.objectId)!
+            currentBlockedIds.remove(at: index)
+        }else{
+            currentBlockedIds.append(user!.objectId)
+        }
+        
+        updateCurrentUserInFirestore(withValues: [kBLOCKEDUSERID:currentBlockedIds]) { (error) in
+            if error != nil {
+                print(error?.localizedDescription)
+                return
+            }
+            self.updateBlockStatus()
+        }
     }
     @IBAction func tapMessageButton(_ sender: Any) {
     }
