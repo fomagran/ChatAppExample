@@ -45,7 +45,21 @@ class ProfileTableViewController: UITableViewController {
     }
     
     func updateBlockStatus() {
+        if user!.objectId != FUser.currentId() {
+            blockButton.isHidden  = false
+            messageButton.isHidden = false
+            callButton.isHidden = false
+        }else{
+            blockButton.isHidden  = true
+            messageButton.isHidden = true
+            callButton.isHidden = true
+        }
         
+        if FUser.currentUser()!.blockedUsers.contains(user!.objectId) {
+            blockButton.setTitle("Unblock User", for: .normal)
+        }else{
+            blockButton.setTitle("Block User", for: .normal)
+        }
     }
     // MARK: - Table view data source
 
