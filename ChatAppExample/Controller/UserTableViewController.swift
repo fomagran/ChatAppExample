@@ -24,6 +24,13 @@ class UserTableViewController: UITableViewController,UISearchResultsUpdating {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "User"
+        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.searchController = searchController
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
         loadUsers(filter: kCITY)
 
     }
@@ -98,17 +105,35 @@ class UserTableViewController: UITableViewController,UISearchResultsUpdating {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
       
-        return 1
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return 1
+        }else{
+            return allUsersGroupped.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-     
-        return allUsers.count
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredUsers.count
+        }else{
+            let sectionTitle = self.sectionTitleList[section]
+            let users = self.allUsersGroupped[sectionTitle]
+            return users!.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! UserTableViewCell
-        cell.generateCellWith(fUser: allUsers[indexPath.row], indexPath: indexPath)
+        var user:FUser
+        if searchController.isActive && searchController.searchBar.text != "" {
+            user = filteredUsers[indexPath.row]
+        }else{
+            let sectionTitle = self.sectionTitleList[indexPath.row]
+            let users = self.allUsersGroupped[sectionTitle]
+            
+            user = users![indexPath.row]
+        }
+        cell.generateCellWith(fUser: user, indexPath: indexPath)
         return cell
     }
 
