@@ -74,6 +74,8 @@ class UserTableViewController: UITableViewController,UISearchResultsUpdating {
                         self.allUsers.append(fUser)
                     }
                 }
+                self.splitDataIntoSection()
+                self.tableView.reloadData()
             }
             self.tableView.reloadData()
             ProgressHUD.dismiss()
@@ -99,6 +101,24 @@ class UserTableViewController: UITableViewController,UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+    
+    //가장 첫번째 글자로 섹션 나눠줌
+    func splitDataIntoSection() {
+        var sectionTitle:String = ""
+        
+        for i in 0..<self.allUsers.count {
+            let currentUser = self.allUsers[i]
+            let firstChar = currentUser.firstname.first!
+            let firstCharString = "\(firstChar)".uppercased()
+            
+            if firstCharString != sectionTitle {
+                sectionTitle = firstCharString
+                self.allUsersGroupped[sectionTitle] = []
+                self.sectionTitleList.append(sectionTitle)
+            }
+            self.allUsersGroupped[firstCharString]?.append(currentUser)
+        }
     }
 
     // MARK: - Table view data source
@@ -128,13 +148,33 @@ class UserTableViewController: UITableViewController,UISearchResultsUpdating {
         if searchController.isActive && searchController.searchBar.text != "" {
             user = filteredUsers[indexPath.row]
         }else{
-            let sectionTitle = self.sectionTitleList[indexPath.row]
+            let sectionTitle = self.sectionTitleList[indexPath.section]
             let users = self.allUsersGroupped[sectionTitle]
             
             user = users![indexPath.row]
         }
         cell.generateCellWith(fUser: user, indexPath: indexPath)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return ""
+        }else {
+            return sectionTitleList[section]
+        }
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return nil
+        }else{
+            return sectionTitleList
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return index
     }
 
 
