@@ -43,7 +43,7 @@ class UserTableViewCell: UITableViewCell {
         self.fullname.text = fUser.fullname
         
         if fUser.avatar != "" {
-            imageFromData(imageData: fUser.avatar) { (image) in
+            imageFromData(pictureData: fUser.avatar) { (image) in
                 if image != nil {
                     self.avatar.image = image!.circleMasked
                 }

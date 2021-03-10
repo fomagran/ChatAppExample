@@ -51,7 +51,7 @@ class ProfileTableViewController: UITableViewController {
             fullNameLabel.text = user!.fullname
             phoneNumberLabel.text = user!.phoneNumber
             updateBlockStatus()
-            imageFromData(imageData: user!.avatar) { (image) in
+            imageFromData(pictureData: user!.avatar) { (image) in
                 if image != nil {
                     self.profileImage.image = image!.circleMasked
                 }

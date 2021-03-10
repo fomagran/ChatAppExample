@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041830AE25F862B100C0EB68 /* RecentChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041830AD25F862B100C0EB68 /* RecentChatTableViewCell.swift */; };
 		0456B20F25F70462009F84BF /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B20E25F70462009F84BF /* UserTableViewCell.swift */; };
 		0456B21725F7068E009F84BF /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B21625F7068E009F84BF /* HelperExtensions.swift */; };
 		0456B21C25F70A21009F84BF /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B21B25F70A21009F84BF /* UserTableViewController.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041830AD25F862B100C0EB68 /* RecentChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatTableViewCell.swift; sourceTree = "<group>"; };
 		0456B20E25F70462009F84BF /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		0456B21625F7068E009F84BF /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		0456B21B25F70A21009F84BF /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				0456B20E25F70462009F84BF /* UserTableViewCell.swift */,
+				041830AD25F862B100C0EB68 /* RecentChatTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				0498DBB425EF3B5000C8212D /* FcollectionRefrence.swift in Sources */,
 				04C52B9C25F5CB3600DA44F5 /* SettingTableViewController.swift in Sources */,
 				04B147F025EF36E30072442C /* SceneDelegate.swift in Sources */,
+				041830AE25F862B100C0EB68 /* RecentChatTableViewCell.swift in Sources */,
 				0456B21C25F70A21009F84BF /* UserTableViewController.swift in Sources */,
 				0456B22C25F721A3009F84BF /* Recent.swift in Sources */,
 				0498DBB925EF3C0000C8212D /* Constants.swift in Sources */,
