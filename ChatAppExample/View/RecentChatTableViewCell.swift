@@ -22,14 +22,17 @@ class RecentChatTableViewCell: UITableViewCell {
     
     var indexPath:IndexPath!
     
-    let tap = UIGestureRecognizer()
+    let tap = UITapGestureRecognizer()
     var delegate:RecentChatTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         messageView.layer.cornerRadius = messageView.frame.width/2
         tap.addTarget(self, action: #selector(self.tapProfile))
         profile.isUserInteractionEnabled = true
         profile.addGestureRecognizer(tap)
+
         
     }
 
@@ -40,7 +43,7 @@ class RecentChatTableViewCell: UITableViewCell {
     
     func generateCell(recentChat:NSDictionary,indexPath:IndexPath) {
         self.indexPath = indexPath
-        self.name.text = recentChat[kWITHUSERUSERNAME] as? String
+        self.name.text = recentChat[kWITHUSERFULLNAME] as? String
         self.recentChat.text = recentChat[kLASTMESSAGE] as? String
         self.messageNumber.text = recentChat[kCOUNTER] as? String
         
@@ -79,6 +82,7 @@ class RecentChatTableViewCell: UITableViewCell {
     }
     
     @objc func tapProfile() {
+     
         delegate?.didTapProfile(indexPath: indexPath)
     }
 
