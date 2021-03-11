@@ -23,6 +23,12 @@ class ChatViewController: JSQMessagesViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: #imageLiteral(resourceName: "Back"), style: .plain, target: self, action: #selector(tapBackButton))]
+        
+        collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
+        collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+
 
         self.senderId = FUser.currentId()
         self.senderDisplayName = FUser.currentUser()!.firstname
@@ -34,12 +40,19 @@ class ChatViewController: JSQMessagesViewController {
         
         self.inputToolbar.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
+        inputToolbar.contentView.rightBarButtonItem.setImage(#imageLiteral(resourceName: "mic"), for: .normal)
+        inputToolbar.contentView.rightBarButtonItem.setTitle("", for: .normal)
+        
     }
     
     override func viewDidLayoutSubviews() {
         perform(Selector(("jsq_updateCollectionViewInsets")))
+        
     }
     
+    @objc func tapBackButton() {
+        
+    }
 
 
 }
