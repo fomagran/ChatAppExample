@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseFirestore
 
-class ChatsViewController: UIViewController,UISearchResultsUpdating {
+class ChattingRoomViewController: UIViewController,UISearchResultsUpdating {
 
     @IBOutlet weak var table: UITableView!
     
@@ -86,7 +86,7 @@ class ChatsViewController: UIViewController,UISearchResultsUpdating {
 }
 
 
-extension ChatsViewController:UITableViewDelegate,UITableViewDataSource {
+extension ChattingRoomViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.isActive && searchController.searchBar.text != "" {
             return filteredChats.count
@@ -113,6 +113,7 @@ extension ChatsViewController:UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
         var tempRecent:NSDictionary!
         if searchController.isActive && searchController.searchBar.text != "" {
             tempRecent = filteredChats[indexPath.row]
@@ -143,10 +144,27 @@ extension ChatsViewController:UITableViewDelegate,UITableViewDataSource {
         return swipeActions
        
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.table.deselectRow(at: indexPath, animated: true)
+        
+        var recent:NSDictionary!
+        if searchController.isActive && searchController.searchBar.text != "" {
+            recent = filteredChats[indexPath.row]
+        }else{
+            recent = recentChats[indexPath.row]
+        }
+        
+        restartRecentChat(recent: recent)
+        
+        let chatVC = ChatViewController()
+        chatVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(chatVC, animated: true)
+    }
 }
 
 
-extension ChatsViewController:RecentChatTableViewCellDelegate {
+extension ChattingRoomViewController:RecentChatTableViewCellDelegate {
     
     func didTapProfile(indexPath: IndexPath) {
         var recentChat = NSDictionary()
