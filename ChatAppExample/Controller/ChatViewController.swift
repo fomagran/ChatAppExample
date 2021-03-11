@@ -51,9 +51,52 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     @objc func tapBackButton() {
-        
+        self.navigationController?.popViewController(animated: true)
     }
 
+    //클립모양버튼 눌렀을 때
+    override func didPressAccessoryButton(_ sender: UIButton!) {
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let photoOrVideo = UIAlertAction(title: "Camera", style: .default) { (action) in
+            
+        }
+        
+        let sharePhoto = UIAlertAction(title: "Photo Library", style: .default) { (action) in
+    
+        }
+        
+        let shareVideo = UIAlertAction(title: "Video Library", style: .default) { (action) in
+            
+        }
+        
+        let shareLocation = UIAlertAction(title: "Location Library", style: .default) { (action) in
+            
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            
+        }
+        
+        photoOrVideo.setValue(UIImage(named: "camera"), forKey: "image")
+        sharePhoto.setValue(UIImage(named: "picture"), forKey: "image")
+        shareVideo.setValue(UIImage(named: "video"), forKey: "image")
+        shareLocation.setValue(UIImage(named: "location"), forKey: "image")
+        
+        optionMenu.addAction(photoOrVideo)
+        optionMenu.addAction(sharePhoto)
+        optionMenu.addAction(shareVideo)
+        optionMenu.addAction(shareLocation)
+        optionMenu.addAction(cancel)
+        
+        self.present(optionMenu, animated: true, completion: nil)
+        
+    }
+    
+    //마이크버튼 눌렀을때
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        
+    }
 
 }
 
