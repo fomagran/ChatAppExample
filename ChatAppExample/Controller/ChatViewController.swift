@@ -53,6 +53,14 @@ class ChatViewController: JSQMessagesViewController {
     @objc func tapBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func updateSendButton(isSend:Bool) {
+        if isSend {
+            inputToolbar.contentView.rightBarButtonItem.setImage(#imageLiteral(resourceName: "send"), for: .normal)
+        }else{
+        inputToolbar.contentView.rightBarButtonItem.setImage(#imageLiteral(resourceName: "mic"), for: .normal)
+        }
+    }
 
     //클립모양버튼 눌렀을 때
     override func didPressAccessoryButton(_ sender: UIButton!) {
@@ -91,11 +99,25 @@ class ChatViewController: JSQMessagesViewController {
         
         self.present(optionMenu, animated: true, completion: nil)
         
+   
+        
     }
     
     //마이크버튼 눌렀을때
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        
+        if text != "" {
+            updateSendButton(isSend: false)
+        }else {
+
+        }
+    }
+    
+    override func textViewDidChange(_ textView: UITextView) {
+        if textView.text != "" {
+            updateSendButton(isSend: true)
+        }else{
+            updateSendButton(isSend: false)
+        }
     }
 
 }
