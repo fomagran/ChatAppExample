@@ -16,6 +16,11 @@ import FirebaseFirestore
 
 class ChatViewController: JSQMessagesViewController {
     
+    var chatRoomId:String!
+    var memberIds:[String]!
+    var membersToPush:[String]!
+    var titleName:String!
+    
     var myBubble = JSQMessagesBubbleImageFactory()?.outgoingMessagesBubbleImage(with: .systemOrange)
     var otherBubble = JSQMessagesBubbleImageFactory()?.outgoingMessagesBubbleImage(with: .lightGray)
     
@@ -60,6 +65,20 @@ class ChatViewController: JSQMessagesViewController {
         }else{
         inputToolbar.contentView.rightBarButtonItem.setImage(#imageLiteral(resourceName: "mic"), for: .normal)
         }
+    }
+    
+    func sendMessage(text:String?,date:Date,picture:UIImage?,location:String?,video:NSURL?,audio:String?) {
+        var outgoingMessage:OutgoingMessage?
+        let currentUser = FUser.currentUser()!
+        
+        if let text = text {
+            outgoingMessage = OutgoingMessage(message: text, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELETED, type: kTEXT)
+        }
+        
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        self.finishSendingMessage()
+        
+        outgoingMessage!.sendMessage(chatRoomID: chatRoomId , messageDictionary: outgoingMessage!.messageDictionary, memberIds: memberIds, membersToPush: membersToPush)
     }
 
     //클립모양버튼 눌렀을 때
@@ -107,8 +126,9 @@ class ChatViewController: JSQMessagesViewController {
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         if text != "" {
             updateSendButton(isSend: false)
+            sendMessage(text: text, date: date, picture: nil, location: nil, video: nil, audio: nil)
         }else {
-
+            
         }
     }
     

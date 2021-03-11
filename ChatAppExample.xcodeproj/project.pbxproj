@@ -15,6 +15,7 @@
 		0456B22625F71AA1009F84BF /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B22525F71AA1009F84BF /* ProfileTableViewController.swift */; };
 		0456B22C25F721A3009F84BF /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B22B25F721A3009F84BF /* Recent.swift */; };
 		046C144C25F9B04C0087FA0C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C144B25F9B04C0087FA0C /* ChatViewController.swift */; };
+		046C145725F9BC480087FA0C /* OutgoingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C145625F9BC480087FA0C /* OutgoingMessage.swift */; };
 		0498DBAF25EF398E00C8212D /* FUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498DBAE25EF398E00C8212D /* FUser.swift */; };
 		0498DBB425EF3B5000C8212D /* FcollectionRefrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498DBB325EF3B5000C8212D /* FcollectionRefrence.swift */; };
 		0498DBB925EF3C0000C8212D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498DBB825EF3C0000C8212D /* Constants.swift */; };
@@ -61,6 +62,7 @@
 		0456B22525F71AA1009F84BF /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		0456B22B25F721A3009F84BF /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		046C144B25F9B04C0087FA0C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		046C145625F9BC480087FA0C /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
 		0498DBAE25EF398E00C8212D /* FUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
 		0498DBB325EF3B5000C8212D /* FcollectionRefrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcollectionRefrence.swift; sourceTree = "<group>"; };
 		0498DBB825EF3C0000C8212D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				0456B22B25F721A3009F84BF /* Recent.swift */,
+				046C145625F9BC480087FA0C /* OutgoingMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				04B147F025EF36E30072442C /* SceneDelegate.swift in Sources */,
 				041830AE25F862B100C0EB68 /* RecentChatTableViewCell.swift in Sources */,
 				0456B21C25F70A21009F84BF /* UserTableViewController.swift in Sources */,
+				046C145725F9BC480087FA0C /* OutgoingMessage.swift in Sources */,
 				0456B22C25F721A3009F84BF /* Recent.swift in Sources */,
 				0498DBB925EF3C0000C8212D /* Constants.swift in Sources */,
 			);
