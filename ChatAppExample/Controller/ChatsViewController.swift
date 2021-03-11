@@ -130,6 +130,9 @@ extension ChatsViewController:UITableViewDelegate,UITableViewDataSource {
         
         
         let deleteItem = UIContextualAction(style: .destructive, title: "Delete") {  (contextualAction, view, boolValue) in
+            self.recentChats.remove(at: indexPath.row)
+            deleteRecentChat(recentChatDictionary: tempRecent)
+            self.table.reloadData()
         }
         let muteItem = UIContextualAction(style: .destructive, title: muteTitle) {  (contextualAction, view, boolValue) in
         }

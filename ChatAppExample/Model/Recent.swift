@@ -84,3 +84,11 @@ func createRecentItems(userId:String,chatRoomId:String,members:[String],withUser
     
     localReference.setData(recent)
 }
+
+
+func deleteRecentChat(recentChatDictionary:NSDictionary) {
+    if let recentId = recentChatDictionary[kRECENTID] {
+        reference(.Recent).document(recentId as! String).delete()
+    }
+    
+}
