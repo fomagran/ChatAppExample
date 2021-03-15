@@ -9,6 +9,7 @@ import Foundation
 import JSQMessagesViewController
 
 class IncomingMessage {
+    
     var collection:JSQMessagesCollectionView
     
     init(collectionView:JSQMessagesCollectionView) {
@@ -22,7 +23,7 @@ class IncomingMessage {
         
         switch type {
         case kTEXT:
-         message =  createMessage(messageDictionary: messageDictionary, chatRoomId: chatRoomId)
+         message = createTextMessage(messageDictionary: messageDictionary, chatRoomId: chatRoomId)
         case kPICTURE:
             print("text")
         case kVIDEO:

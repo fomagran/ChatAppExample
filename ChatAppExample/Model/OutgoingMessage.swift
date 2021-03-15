@@ -20,7 +20,7 @@ class OutgoingMessage {
         messageDictionary[kMESSAGEID] = messageId
         
         for memberId in memberIds {
-            reference(.Message).document(messageId).collection(chatRoomID).document(messageId).setData(messageDictionary as! [String:Any])
+            reference(.Message).document(memberId).collection(chatRoomID).document(messageId).setData(messageDictionary as! [String:Any])
         }
         
         
