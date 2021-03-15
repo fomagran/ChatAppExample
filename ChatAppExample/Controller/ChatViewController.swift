@@ -154,7 +154,8 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, header headerView: JSQMessagesLoadEarlierHeaderView!, didTapLoadEarlierMessagesButton sender: UIButton!) {
-        print("Load more")
+        self.loadMoreMessages(maxNumber: maxMessageNumber, minNumber: minMessageNumber)
+        self.collectionView.reloadData()
     }
     
     func readTimeFrom(dateString:String) -> String {
@@ -229,8 +230,6 @@ class ChatViewController: JSQMessagesViewController {
         
         self.present(optionMenu, animated: true, completion: nil)
         
-   
-        
     }
     
     //마이크버튼 눌렀을때
@@ -267,6 +266,32 @@ class ChatViewController: JSQMessagesViewController {
         }
     }
     
+    func loadMoreMessages(maxNumber:Int,minNumber:Int) {
+        if loadOld {
+            maxMessageNumber = minNumber - 1
+            minMessageNumber = maxMessageNumber - kNUMBEROFMESSAGES
+        }
+        
+        if minMessageNumber < 0 {
+            minMessageNumber = 0
+        }
+        
+        for i in (minMessageNumber...maxMessageNumber).reversed() {
+            let messageDictionary = loadedMessages[i]
+            insertNewMessage(messageDictionary: messageDictionary)
+            loadedMessagesCount += 1
+        }
+        loadOld = true
+        self.showLoadEarlierMessagesHeader = loadedMessagesCount != loadedMessages.count
+    }
+    
+    func insertNewMessage(messageDictionary:NSDictionary) {
+        let incomingMessage = IncomingMessage(collectionView: collectionView!)
+        let message = incomingMessage.createMessage(messageDictionary: messageDictionary, chatRoomId: chatRoomId)
+        objectMessages.insert(messageDictionary, at: 0)
+        messages.insert(message!, at: 0)
+    }
+    
     func listenForNewChats() {
         var lastMessageDate = "0"
         
@@ -299,7 +324,7 @@ class ChatViewController: JSQMessagesViewController {
     func getOldMessagesInBackground() {
         if loadedMessages.count > 10 {
             let firstMessageDate = loadedMessages.first![kDATE] as! String
-            reference(.Message).document(FUser.currentId()).collection(chatRoomId).whereField(kDATE, isGreaterThan: firstMessageDate).getDocuments { (snapshot, error) in
+            reference(.Message).document(FUser.currentId()).collection(chatRoomId).whereField(kDATE, isLessThan: firstMessageDate).getDocuments { (snapshot, error) in
                 guard let snapshot = snapshot else {return}
                 
                 let sorted = ((dictionaryFromSnapshots(snapshots: snapshot.documents)) as NSArray).sortedArray(using: [NSSortDescriptor(key: kDATE, ascending: true)]) as! [NSDictionary]
