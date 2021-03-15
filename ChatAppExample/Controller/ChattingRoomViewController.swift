@@ -163,6 +163,7 @@ extension ChattingRoomViewController:UITableViewDelegate,UITableViewDataSource {
         chatVC.memberIds = (recent[kMEMBERS] as? [String])!
         chatVC.chatRoomId = (recent[kCHATROOMID] as? String)!
         chatVC.titleName = (recent[kWITHUSERFULLNAME] as? String)!
+        chatVC.isGroup = false
         
         
         self.navigationController?.pushViewController(chatVC, animated: true)

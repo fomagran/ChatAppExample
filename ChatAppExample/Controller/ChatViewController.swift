@@ -20,7 +20,9 @@ class ChatViewController: JSQMessagesViewController {
     var memberIds:[String]!
     var membersToPush:[String]!
     var titleName:String!
-    
+    var isGroup:Bool?
+    var group:NSDictionary?
+    var withUsers:[FUser] = []
     
     var typingListener:ListenerRegistration?
     var updateListener:ListenerRegistration?
@@ -42,6 +44,31 @@ class ChatViewController: JSQMessagesViewController {
     var myBubble = JSQMessagesBubbleImageFactory()?.outgoingMessagesBubbleImage(with: .systemOrange)
     var otherBubble = JSQMessagesBubbleImageFactory()?.outgoingMessagesBubbleImage(with: .lightGray)
     
+    let leftBarButtonView:UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+        return view
+    }()
+    
+    let avatarButton:UIButton = {
+       let button = UIButton(frame: CGRect(x: 0, y: 10, width: 25, height: 25))
+        return button
+    }()
+    
+    let titleLabel:UILabel = {
+       let title = UILabel(frame: CGRect(x: 30, y: 10, width: 140, height: 15))
+        title.textAlignment = .left
+        title.font = UIFont.systemFont(ofSize: 14)
+        return title
+    }()
+    
+    let subTitleLabel:UILabel = {
+       let subTitle = UILabel(frame: CGRect(x: 30, y: 25, width: 140, height: 15))
+        subTitle.textAlignment = .left
+        subTitle.font = UIFont.systemFont(ofSize: 10)
+        return subTitle
+    }()
+    
+    
     
 
     override func viewDidLoad() {
@@ -51,8 +78,10 @@ class ChatViewController: JSQMessagesViewController {
         
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
-
+        
+        setCustomTitle()
         loadMessages()
+        
         self.senderId = FUser.currentId()
         self.senderDisplayName = FUser.currentUser()!.firstname
         
@@ -72,6 +101,7 @@ class ChatViewController: JSQMessagesViewController {
         perform(Selector(("jsq_updateCollectionViewInsets")))
         
     }
+
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView,cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
@@ -158,11 +188,67 @@ class ChatViewController: JSQMessagesViewController {
         self.collectionView.reloadData()
     }
     
+    func setCustomTitle() {
+        leftBarButtonView.addSubview(avatarButton)
+        leftBarButtonView.addSubview(titleLabel)
+        leftBarButtonView.addSubview(subTitleLabel)
+        
+        let infoButton = UIBarButtonItem(image: UIImage(named: "info"), style: .plain, target: self, action: #selector(self.tapInfoButton))
+        
+        self.navigationItem.rightBarButtonItem = infoButton
+        let leftBarButtonItem = UIBarButtonItem(customView: leftBarButtonView)
+        self.navigationItem.leftBarButtonItems?.append(leftBarButtonItem)
+        
+        if isGroup! {
+            avatarButton.addTarget(self, action: #selector(self.showGroup), for: .touchUpInside)
+        }else{
+            avatarButton.addTarget(self, action: #selector(self.showUserProfile), for: .touchUpInside)
+        }
+        
+        getUsersFromFirestore(withIds: memberIds) { (withUsers) in
+            self.withUsers = withUsers
+            if !self.isGroup! {
+                self.setUpForSingleChat()
+            }
+        }
+    }
+    
+    func setUpForSingleChat() {
+        let withUser = withUsers.first!
+        imageFromData(pictureData: withUser.avatar) { (image) in
+            if image != nil {
+                avatarButton.setImage(image!.circleMasked, for: .normal)
+            }
+        }
+        
+        titleLabel.text = withUser.fullname
+        if withUser.isOnline {
+            subTitleLabel.text = "Online"
+        }else {
+            subTitleLabel.text = "Offline"
+        }
+        
+        avatarButton.addTarget(self, action: #selector(self.showUserProfile), for: .touchUpInside)
+    }
+    
     func readTimeFrom(dateString:String) -> String {
         let date = dateFormatter().date(from: dateString)
         let currentDateFormat = dateFormatter()
         currentDateFormat.dateFormat = "HH:mm"
         return currentDateFormat.string(from: date!)
+    }
+    @objc func showUserProfile() {
+        let profileVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "ProfileTableViewController") as! ProfileTableViewController
+        
+        profileVC.user = withUsers.first!
+            self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
+    @objc func showGroup() {
+       
+    }
+    @objc func tapInfoButton() {
+        
     }
     
     @objc func tapBackButton() {
