@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		041830AE25F862B100C0EB68 /* RecentChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041830AD25F862B100C0EB68 /* RecentChatTableViewCell.swift */; };
+		042F83C2260050D6009071A7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F83C1260050D6009071A7 /* Camera.swift */; };
+		042F83C726005409009071A7 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F83C626005409009071A7 /* Download.swift */; };
 		0456B20F25F70462009F84BF /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B20E25F70462009F84BF /* UserTableViewCell.swift */; };
 		0456B21725F7068E009F84BF /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B21625F7068E009F84BF /* HelperExtensions.swift */; };
 		0456B21C25F70A21009F84BF /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B21B25F70A21009F84BF /* UserTableViewController.swift */; };
@@ -56,6 +58,8 @@
 
 /* Begin PBXFileReference section */
 		041830AD25F862B100C0EB68 /* RecentChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatTableViewCell.swift; sourceTree = "<group>"; };
+		042F83C1260050D6009071A7 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		042F83C626005409009071A7 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		0456B20E25F70462009F84BF /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		0456B21625F7068E009F84BF /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		0456B21B25F70A21009F84BF /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 				0456B22B25F721A3009F84BF /* Recent.swift */,
 				046C145625F9BC480087FA0C /* OutgoingMessage.swift */,
 				046C145B25F9C29D0087FA0C /* IncomingMessage.swift */,
+				042F83C1260050D6009071A7 /* Camera.swift */,
+				042F83C626005409009071A7 /* Download.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -506,6 +512,8 @@
 				04B147F025EF36E30072442C /* SceneDelegate.swift in Sources */,
 				041830AE25F862B100C0EB68 /* RecentChatTableViewCell.swift in Sources */,
 				0456B21C25F70A21009F84BF /* UserTableViewController.swift in Sources */,
+				042F83C726005409009071A7 /* Download.swift in Sources */,
+				042F83C2260050D6009071A7 /* Camera.swift in Sources */,
 				046C145725F9BC480087FA0C /* OutgoingMessage.swift in Sources */,
 				0456B22C25F721A3009F84BF /* Recent.swift in Sources */,
 				0498DBB925EF3C0000C8212D /* Constants.swift in Sources */,

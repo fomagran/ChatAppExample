@@ -14,7 +14,7 @@ import AVFoundation
 import AVKit
 import FirebaseFirestore
 
-class ChatViewController: JSQMessagesViewController {
+class ChatViewController: JSQMessagesViewController,UINavigationControllerDelegate {
     
     var chatRoomId:String!
     var memberIds:[String]!
@@ -281,6 +281,9 @@ class ChatViewController: JSQMessagesViewController {
 
     //클립모양버튼 눌렀을 때
     override func didPressAccessoryButton(_ sender: UIButton!) {
+        
+        let camera = Camera(delegate_: self)
+        
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let photoOrVideo = UIAlertAction(title: "Camera", style: .default) { (action) in
@@ -288,7 +291,7 @@ class ChatViewController: JSQMessagesViewController {
         }
         
         let sharePhoto = UIAlertAction(title: "Photo Library", style: .default) { (action) in
-    
+            camera.PresentPhotoLibrary(target: self, canEdit: false)
         }
         
         let shareVideo = UIAlertAction(title: "Video Library", style: .default) { (action) in
@@ -317,6 +320,7 @@ class ChatViewController: JSQMessagesViewController {
         self.present(optionMenu, animated: true, completion: nil)
         
     }
+    
     
     //마이크버튼 눌렀을때
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
@@ -499,4 +503,18 @@ extension JSQMessagesInputToolbar {
         
     }
     
+}
+
+
+extension ChatViewController:UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let video = info[UIImagePickerController.InfoKey.mediaURL] as? NSURL
+        let picture = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        
+        sendMessage(text: nil, date: Date(), picture: picture, location: nil, video: video, audio: nil)
+        picker.dismiss(animated: true, completion: nil)
+    
+        
+    }
 }
