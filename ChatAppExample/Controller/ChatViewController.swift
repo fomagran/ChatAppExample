@@ -108,9 +108,9 @@ class ChatViewController: JSQMessagesViewController,UINavigationControllerDelega
         let data = messages[indexPath.row]
         
         if data.senderId == FUser.currentId() {
-            cell.textView.textColor = .white
+            cell.textView?.textColor = .white
         }else {
-            cell.textView.textColor = .black
+            cell.textView?.textColor = .black
         }
         return cell
     }
@@ -478,9 +478,8 @@ class ChatViewController: JSQMessagesViewController,UINavigationControllerDelega
         if (messageDictionary[kSENDERID] as! String) != FUser.currentId() {
             
         }
-        
         let message = incomingMessage.createMessage(messageDictionary: messageDictionary, chatRoomId: chatRoomId)
-
+        
         if message != nil {
             objectMessages.append(messageDictionary)
             messages.append(message!)
