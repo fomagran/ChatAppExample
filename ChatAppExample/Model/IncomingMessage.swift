@@ -27,7 +27,7 @@ class IncomingMessage {
         case kPICTURE:
            message = createPictureMessage(messageDictionary: messageDictionary)
         case kVIDEO:
-            print("text")
+            message = createVideoMessage(messageDictionary: messageDictionary)
         case kAUDIO:
             print("text")
         case kLOCATION:
@@ -84,11 +84,49 @@ class IncomingMessage {
         let mediaItem = PhotoMediaItem(image: nil)
         
         mediaItem?.appliesMediaViewMaskAsOutgoing = returnOutgoingStatusForUser(senderId: userId!)
-        downloadImage(imageUrl: messageDictionary[kPICTURE] as! String) { (image) in
+ 
+        downloadImage(imageUrl: messageDictionary[kPICTURE] as! String) {[weak self] (image) in
             if image != nil {
                 mediaItem?.image = image!
-                self.collection.reloadData()
+                self?.collection.reloadData()
             }
+        }
+        return JSQMessage(senderId: userId, senderDisplayName: name,date:date, media: mediaItem)
+    }
+    
+    func createVideoMessage(messageDictionary:NSDictionary) -> JSQMessage {
+        
+        let name = messageDictionary[kSENDERNAME] as? String
+        let userId = messageDictionary[kSENDERID] as? String
+        
+        let date:Date!
+        
+        if let created = messageDictionary[kDATE] {
+            if (created as! String).count != 14 {
+                date = Date()
+            }else {
+                date = dateFormatter().date(from: created as! String)
+            }
+        }else {
+            date = Date()
+        }
+        
+        let videoURL = NSURL(fileURLWithPath: messageDictionary[kVIDEO] as! String)
+        
+        let mediaItem = VideoMessage(withFileURL: videoURL, maskOutgoing: returnOutgoingStatusForUser(senderId: userId!))
+ 
+        downloadVideo(videoUrl: messageDictionary[kVIDEO] as! String) { (isReadyToPlay, fileName) in
+            let url = NSURL(fileURLWithPath: fileInDocumentsDirectory(fileName: fileName))
+            mediaItem.status = kSUCCESS
+            mediaItem.fileURL = url
+            imageFromData(pictureData: messageDictionary[kPICTURE] as! String) { (image) in
+                if image != nil  {
+                    mediaItem.image = image!
+                    self.collection.reloadData()
+                }
+            }
+            self.collection.reloadData()
+            
         }
         return JSQMessage(senderId: userId, senderDisplayName: name,date:date, media: mediaItem)
     }

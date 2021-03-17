@@ -11,6 +11,7 @@
 		042F83C2260050D6009071A7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F83C1260050D6009071A7 /* Camera.swift */; };
 		042F83C726005409009071A7 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F83C626005409009071A7 /* Download.swift */; };
 		042F83CF26005F75009071A7 /* PhotoMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F83CE26005F75009071A7 /* PhotoMediaItem.swift */; };
+		0433A60A2601A89700682546 /* VideoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433A6092601A89700682546 /* VideoMessage.swift */; };
 		0456B20F25F70462009F84BF /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B20E25F70462009F84BF /* UserTableViewCell.swift */; };
 		0456B21725F7068E009F84BF /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B21625F7068E009F84BF /* HelperExtensions.swift */; };
 		0456B21C25F70A21009F84BF /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B21B25F70A21009F84BF /* UserTableViewController.swift */; };
@@ -62,6 +63,7 @@
 		042F83C1260050D6009071A7 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		042F83C626005409009071A7 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		042F83CE26005F75009071A7 /* PhotoMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMediaItem.swift; sourceTree = "<group>"; };
+		0433A6092601A89700682546 /* VideoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMessage.swift; sourceTree = "<group>"; };
 		0456B20E25F70462009F84BF /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		0456B21625F7068E009F84BF /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		0456B21B25F70A21009F84BF /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				042F83C1260050D6009071A7 /* Camera.swift */,
 				042F83C626005409009071A7 /* Download.swift */,
 				042F83CE26005F75009071A7 /* PhotoMediaItem.swift */,
+				0433A6092601A89700682546 /* VideoMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				04C52B9C25F5CB3600DA44F5 /* SettingTableViewController.swift in Sources */,
 				046C144C25F9B04C0087FA0C /* ChatViewController.swift in Sources */,
 				04B147F025EF36E30072442C /* SceneDelegate.swift in Sources */,
+				0433A60A2601A89700682546 /* VideoMessage.swift in Sources */,
 				041830AE25F862B100C0EB68 /* RecentChatTableViewCell.swift in Sources */,
 				0456B21C25F70A21009F84BF /* UserTableViewController.swift in Sources */,
 				042F83C726005409009071A7 /* Download.swift in Sources */,
