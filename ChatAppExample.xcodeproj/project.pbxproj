@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		041830AE25F862B100C0EB68 /* RecentChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041830AD25F862B100C0EB68 /* RecentChatTableViewCell.swift */; };
+		042BB1EF260830D900DE030D /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042BB1EE260830D900DE030D /* AudioViewController.swift */; };
 		042F83C2260050D6009071A7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F83C1260050D6009071A7 /* Camera.swift */; };
 		042F83C726005409009071A7 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F83C626005409009071A7 /* Download.swift */; };
 		042F83CF26005F75009071A7 /* PhotoMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F83CE26005F75009071A7 /* PhotoMediaItem.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		041830AD25F862B100C0EB68 /* RecentChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatTableViewCell.swift; sourceTree = "<group>"; };
+		042BB1EE260830D900DE030D /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		042F83C1260050D6009071A7 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		042F83C626005409009071A7 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		042F83CE26005F75009071A7 /* PhotoMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMediaItem.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				0456B21B25F70A21009F84BF /* UserTableViewController.swift */,
 				0456B22025F70EEA009F84BF /* ChattingRoomViewController.swift */,
 				0456B22525F71AA1009F84BF /* ProfileTableViewController.swift */,
+				042BB1EE260830D900DE030D /* AudioViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				0456B21725F7068E009F84BF /* HelperExtensions.swift in Sources */,
 				04B147F225EF36E30072442C /* LoginViewController.swift in Sources */,
 				0498DBAF25EF398E00C8212D /* FUser.swift in Sources */,
+				042BB1EF260830D900DE030D /* AudioViewController.swift in Sources */,
 				0456B22125F70EEA009F84BF /* ChattingRoomViewController.swift in Sources */,
 				04DA075125F0836600DE6232 /* RegisterViewController.swift in Sources */,
 				0456B20F25F70462009F84BF /* UserTableViewCell.swift in Sources */,

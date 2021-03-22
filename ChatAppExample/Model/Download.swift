@@ -84,6 +84,8 @@ func downloadImage(imageUrl:String,completion:@escaping(_ image:UIImage?) -> Voi
     }
 }
 
+//video
+
 func videoThumbnail(video: NSURL) -> UIImage {
     
     let asset = AVURLAsset(url: video as URL, options: nil)
@@ -173,6 +175,47 @@ func downloadVideo(videoUrl:String,completion:@escaping(_ isReadyToPlay:Bool,_ v
         }
     }
 }
+
+//audio
+
+func uploadAudio(audioPath:String,chatRoomId:String,view:UIView,completion:@escaping(_ audioLink:String?) -> Void) {
+    
+    let progressHUD = MBProgressHUD.showAdded(to: view, animated: true)
+    
+    progressHUD.mode = .determinateHorizontalBar
+    
+    let dateString = dateFormatter().string(from: Date())
+    
+    let audioFileName = "AudioMessages/" + FUser.currentId() + "/" + chatRoomId + "/" + dateString + ".m4a"
+    
+    let audio = NSData(contentsOfFile: audioPath)
+    
+    let ref = storage.reference(forURL: kFILEREFERENCE).child(audioFileName)
+    
+    var task:StorageUploadTask!
+    
+    task = ref.putData(audio! as Data, metadata: nil, completion: { (metadata, error) in
+        task.removeAllObservers()
+        progressHUD.hide(animated: true)
+        
+        if error != nil {
+            print("video upload error \(error?.localizedDescription)")
+            return
+        }
+        
+        ref.downloadURL { (url, error) in
+            guard let downloadUrl = url else {
+                completion(nil)
+                return
+            }
+            completion("\(downloadUrl)")
+        }
+    })
+    task.observe(StorageTaskStatus.progress) { (snapshot) in
+        progressHUD.progress = Float((snapshot.progress?.completedUnitCount)!)/Float((snapshot.progress?.totalUnitCount)!)
+    }
+}
+
 
 
 
