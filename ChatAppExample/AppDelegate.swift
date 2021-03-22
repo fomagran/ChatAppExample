@@ -7,16 +7,20 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate{
     
     var window: UIWindow?
+    var locationManager:CLLocationManager?
+    var coordinates:CLLocationCoordinate2D?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        requestAuthorization()
         
         return true
     }
@@ -36,7 +40,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     
-  
+    private func requestAuthorization() {
+           if locationManager == nil {
+               locationManager = CLLocationManager()
+               //정확도를 검사한다.
+               locationManager!.desiredAccuracy = kCLLocationAccuracyBest
+               //앱을 사용할때 권한요청
+               locationManager!.requestWhenInUseAuthorization()
+               locationManager!.delegate = self
+               locationManagerDidChangeAuthorization(locationManager!)
+           }else{
+               //사용자의 위치가 바뀌고 있는지 확인하는 메소드
+               locationManager!.startMonitoringSignificantLocationChanges()
+           }
+       }
+
+    func locationManagerStop() {
+        locationManager!.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("fail to get location")
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        coordinates = locations.last!.coordinate
+    }
 
 }
 
+extension AppDelegate:CLLocationManagerDelegate {
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        if manager.authorizationStatus == .authorizedWhenInUse {
+            coordinates = locationManager!.location!.coordinate
+        }
+    }
+}

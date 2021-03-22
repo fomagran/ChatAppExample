@@ -35,6 +35,12 @@ class OutgoingMessage {
         messageDictionary = NSMutableDictionary(objects: [message,audio,senderId,senderName,dateFormatter().string(from: date),status,type], forKeys: [kMESSAGE as NSCopying,kAUDIO as NSCopying,kSENDERID as  NSCopying,kSENDERNAME as  NSCopying,kDATE as  NSCopying,kSTATUS as  NSCopying,kTYPE as  NSCopying])
     }
     
+    //Location 이니셜
+    
+    init(message:String,latitude:NSNumber,longitude:NSNumber,senderId:String,senderName:String,date:Date,status:String,type:String) {
+        messageDictionary = NSMutableDictionary(objects: [message,latitude,longitude,senderId,senderName,dateFormatter().string(from: date),status,type], forKeys: [kMESSAGE as NSCopying,kLATITUDE as NSCopying,kLONGITUDE as NSCopying,kSENDERID as  NSCopying,kSENDERNAME as  NSCopying,kDATE as  NSCopying,kSTATUS as  NSCopying,kTYPE as  NSCopying])
+    }
+    
     
     func sendMessage(chatRoomID:String,messageDictionary:NSMutableDictionary,memberIds:[String],membersToPush:[String]) {
     

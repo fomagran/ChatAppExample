@@ -16,6 +16,8 @@ import FirebaseFirestore
 
 class ChatViewController: JSQMessagesViewController,UINavigationControllerDelegate {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     var chatRoomId:String!
     var memberIds:[String]!
     var membersToPush:[String]!
@@ -352,6 +354,16 @@ class ChatViewController: JSQMessagesViewController,UINavigationControllerDelega
             return
         }
         
+        if location != nil {
+            print("send location")
+            
+            let lat:NSNumber = NSNumber(value: appDelegate.coordinates!.latitude)
+            let lon:NSNumber = NSNumber(value: appDelegate.coordinates!.latitude)
+            
+            let text = "[\(kLOCATION)]"
+            outgoingMessage = OutgoingMessage(message: text, latitude: lat, longitude: lon, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELIVERED, type: kLOCATION)
+        }
+        
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         self.finishSendingMessage()
         
@@ -380,6 +392,10 @@ class ChatViewController: JSQMessagesViewController,UINavigationControllerDelega
         }
         
         let shareLocation = UIAlertAction(title: "Location Library", style: .default) { (action) in
+            
+            if self.haveAccessToUserLocation() {
+                self.sendMessage(text: nil, date: Date(), picture: nil, location: kLOCATION, video: nil, audio: nil)
+            }
             
         }
         
@@ -561,6 +577,15 @@ class ChatViewController: JSQMessagesViewController,UINavigationControllerDelega
             return false
         }else {
             return true
+        }
+    }
+    
+    func haveAccessToUserLocation() -> Bool {
+        if appDelegate.locationManager != nil {
+            return true
+        }else {
+            ProgressHUD.showError("Please give accsss to location in Settings")
+            return false
         }
     }
 
