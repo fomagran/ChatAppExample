@@ -216,6 +216,32 @@ func uploadAudio(audioPath:String,chatRoomId:String,view:UIView,completion:@esca
     }
 }
 
+func downloadAudio(audioUrl:String,completion:@escaping(_ audioFileName:String) -> Void) {
+    let audioURL = NSURL(string: audioUrl)
+    let audioFileName = (audioUrl.components(separatedBy: "%").last!).components(separatedBy: "?").first!
+    if fileExsistsAtPath(path: audioFileName) {
+            completion(audioFileName)
+    }else {
+        let downloadQueue = DispatchQueue(label: "audioDownloadQueue")
+        downloadQueue.async {
+            let data = NSData(contentsOf: audioURL! as URL)
+            if data != nil {
+                var docURL = getDocumentsURL()
+                docURL = docURL.appendingPathComponent(audioFileName,isDirectory: false)
+                data!.write(to:docURL,atomically:true)
+                
+                DispatchQueue.main.async {
+                    completion(audioFileName)
+                }
+            }else {
+                DispatchQueue.main.async {
+                    print("no audio in database")
+                }
+            }
+        }
+    }
+}
+
 
 
 
