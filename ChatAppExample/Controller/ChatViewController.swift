@@ -76,6 +76,8 @@ class ChatViewController: JSQMessagesViewController,UINavigationControllerDelega
         
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: #imageLiteral(resourceName: "Back"), style: .plain, target: self, action: #selector(tapBackButton))]
         
+        JSQMessagesCollectionViewCell.registerMenuAction(#selector(delete))
+        
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
@@ -230,6 +232,35 @@ class ChatViewController: JSQMessagesViewController,UINavigationControllerDelega
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+        super.collectionView(collectionView,shouldShowMenuForItemAt: indexPath)
+        return true
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        if messages[indexPath.row].isMediaMessage {
+            if action.description == "delete:" {
+                return true
+            }else {
+                return false
+            }
+        }else {
+            if action.description == "delete:" || action.description == "copy:" {
+                return true
+            }else {
+                return false
+            }
+        }
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didDeleteMessageAt indexPath: IndexPath!) {
+        let messageId = objectMessages[indexPath.row][kMESSAGEID] as! String
+        
+        objectMessages.remove(at: indexPath.row)
+        messages.remove(at: indexPath.row)
+        
+        OutgoingMessage.deleteMessage(withId: messageId, chatRoomId: chatRoomId)
+    }
     func setCustomTitle() {
         leftBarButtonView.addSubview(avatarButton)
         leftBarButtonView.addSubview(titleLabel)
