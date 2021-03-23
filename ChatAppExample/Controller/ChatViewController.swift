@@ -26,8 +26,8 @@ class ChatViewController: JSQMessagesViewController,UINavigationControllerDelega
     var group:NSDictionary?
     var withUsers:[FUser] = []
     
-    var typingListener:ListenerRegistration?
-    var updateListener:ListenerRegistration?
+    var typingChatListener:ListenerRegistration?
+    var updatedChatListener:ListenerRegistration?
     var newChatListener:ListenerRegistration?
     
     let legitTypes = [kAUDIO,kVIDEO,kTEXT,kLOCATION,kPICTURE]
@@ -439,6 +439,19 @@ class ChatViewController: JSQMessagesViewController,UINavigationControllerDelega
     }
     
     func loadMessages() {
+        updatedChatListener = reference(.Message).document(FUser.currentId()).collection(chatRoomId).addSnapshotListener({ (snapshot, error) in
+            
+            guard let snapshot = snapshot else {return}
+            
+            if !snapshot.isEmpty {
+                snapshot.documentChanges.forEach { (diff) in
+                    if diff.type == .modified {
+                        self.updateMessage(messageDictionary: diff.document.data() as NSDictionary)
+                    }
+                }
+            }
+            
+        })
         reference(.Message).document(FUser.currentId()).collection(chatRoomId).order(by: kDATE,descending: true).limit(to: 11).getDocuments { (snapshot, error) in
             
             guard let snapshot = snapshot else { return  self.initialLoadComplete = true }
@@ -451,6 +464,18 @@ class ChatViewController: JSQMessagesViewController,UINavigationControllerDelega
             self.getOldMessagesInBackground()
             self.listenForNewChats()
             
+        }
+    }
+    
+    func updateMessage(messageDictionary:NSDictionary) {
+        
+        for index in 0..<objectMessages.count {
+            let temp = objectMessages[index]
+            
+            if messageDictionary[kMESSAGEID] as! String == temp[kMESSAGEID] as! String {
+                objectMessages[index] = messageDictionary
+                self.collectionView.reloadData()
+            }
         }
     }
     
@@ -560,7 +585,7 @@ class ChatViewController: JSQMessagesViewController,UINavigationControllerDelega
         let incomingMessage = IncomingMessage(collectionView: self.collectionView!)
 
         if (messageDictionary[kSENDERID] as! String) != FUser.currentId() {
-            
+            OutgoingMessage.updateMessage(withId: messageDictionary[kMESSAGEID] as! String, chatRoomId: chatRoomId, memberIds: memberIds)
         }
         let message = incomingMessage.createMessage(messageDictionary: messageDictionary, chatRoomId: chatRoomId)
         
