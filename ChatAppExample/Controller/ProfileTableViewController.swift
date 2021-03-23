@@ -39,6 +39,8 @@ class ProfileTableViewController: UITableViewController {
             }
             self.updateBlockStatus()
         }
+        
+        blockUser(userToBlock: user!)
     }
     @IBAction func tapMessageButton(_ sender: Any) {
     }
