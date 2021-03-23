@@ -70,8 +70,6 @@ class ChatViewController: JSQMessagesViewController,UINavigationControllerDelega
         return subTitle
     }()
     
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +95,14 @@ class ChatViewController: JSQMessagesViewController,UINavigationControllerDelega
         inputToolbar.contentView.rightBarButtonItem.setImage(#imageLiteral(resourceName: "mic"), for: .normal)
         inputToolbar.contentView.rightBarButtonItem.setTitle("", for: .normal)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        cleanRecentCounter(chatRoomId: chatRoomId)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        cleanRecentCounter(chatRoomId: chatRoomId)
     }
     
     override func viewDidLayoutSubviews() {
@@ -288,6 +294,7 @@ class ChatViewController: JSQMessagesViewController,UINavigationControllerDelega
     }
     
     @objc func tapBackButton() {
+        cleanRecentCounter(chatRoomId:chatRoomId)
         self.navigationController?.popViewController(animated: true)
     }
     

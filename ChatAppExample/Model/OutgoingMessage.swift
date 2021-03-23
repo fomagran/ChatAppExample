@@ -51,6 +51,7 @@ class OutgoingMessage {
             reference(.Message).document(memberId).collection(chatRoomID).document(messageId).setData(messageDictionary as! [String:Any])
         }
         
+        updateRecents(chatRoomId: chatRoomID, lastMessage: messageDictionary[kMESSAGE] as! String)
         
     }
     
