@@ -82,6 +82,23 @@ class ChattingRoomViewController: UIViewController,UISearchResultsUpdating {
     @objc func tapGroupButton() {
         
     }
+    
+    func updatePushMembers(recent:NSDictionary,mute:Bool) {
+        var membersToPush = recent[kMEMBERSTOPUSH] as! [String]
+        
+        if mute {
+            let index = membersToPush.firstIndex(of: FUser.currentId())!
+            membersToPush.remove(at: index)
+        }else{
+            membersToPush.append(FUser.currentId())
+        }
+        
+        updateExistingRecentWithNewValues(chatRoomId: recent[kCHATROOMID] as! String, members: recent[kMEMBERS] as! [String], withValues: [kMEMBERSTOPUSH:membersToPush])
+    }
+    
+    
+    
+    
 
 }
 
@@ -136,6 +153,7 @@ extension ChattingRoomViewController:UITableViewDelegate,UITableViewDataSource {
             self.table.reloadData()
         }
         let muteItem = UIContextualAction(style: .destructive, title: muteTitle) {  (contextualAction, view, boolValue) in
+            self.updatePushMembers(recent: tempRecent, mute: mute)
         }
         muteItem.backgroundColor = .orange
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem,muteItem])
