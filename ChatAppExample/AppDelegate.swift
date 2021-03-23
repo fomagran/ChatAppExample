@@ -8,9 +8,10 @@
 import UIKit
 import Firebase
 import CoreLocation
+import OneSignal
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver{
     
     var window: UIWindow?
     var locationManager:CLLocationManager?
@@ -20,8 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        requestNotificationPermission()
         requestAuthorization()
+        OneSignal.add(self as OSSubscriptionObserver)
+        OneSignal.initWithLaunchOptions(launchOptions)
+        OneSignal.setAppId(kONESIGNALAPPID)
         
+        startOneSignal()
         return true
     }
 
@@ -65,6 +71,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         coordinates = locations.last!.coordinate
     }
+    
+    func requestNotificationPermission(){
+           UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge], completionHandler: {didAllow,Error in
+               if didAllow {
+                   print("Push: 권한 허용")
+               } else {
+                   print("Push: 권한 거부")
+               }
+           })
+       }
+    
+    //MARK: OneSignal
+    
+
+    
+    func onOSSubscriptionChanged(_ stateChanges: OSSubscriptionStateChanges!) {
+         if !stateChanges.from.isSubscribed && stateChanges.to.isSubscribed {
+            print("Subscribed for OneSignal push notifications!")
+            // get player ID
+            print(stateChanges.to.userId)
+         }
+         print("SubscriptionStateChange: \n\(stateChanges)")
+      }
 
 }
 

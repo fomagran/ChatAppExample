@@ -72,6 +72,7 @@
 		0456B22025F70EEA009F84BF /* ChattingRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingRoomViewController.swift; sourceTree = "<group>"; };
 		0456B22525F71AA1009F84BF /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		0456B22B25F721A3009F84BF /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
+		04651326260997AE00FBFF4B /* ChatAppExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatAppExample.entitlements; sourceTree = "<group>"; };
 		046C144B25F9B04C0087FA0C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		046C145625F9BC480087FA0C /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
 		046C145B25F9C29D0087FA0C /* IncomingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessage.swift; sourceTree = "<group>"; };
@@ -183,6 +184,7 @@
 		04B147EC25EF36E30072442C /* ChatAppExample */ = {
 			isa = PBXGroup;
 			children = (
+				04651326260997AE00FBFF4B /* ChatAppExample.entitlements */,
 				0456B22A25F72198009F84BF /* Model */,
 				0456B20D25F70451009F84BF /* View */,
 				04DA075625F0839B00DE6232 /* Controller */,
@@ -705,6 +707,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ChatAppExample/ChatAppExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2F54VR68GM;
 				INFOPLIST_FILE = ChatAppExample/Info.plist;
@@ -725,6 +728,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ChatAppExample/ChatAppExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2F54VR68GM;
 				INFOPLIST_FILE = ChatAppExample/Info.plist;

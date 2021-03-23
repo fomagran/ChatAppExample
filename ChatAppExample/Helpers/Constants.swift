@@ -20,7 +20,7 @@ public let APP_STARTED_NOTIFICATION = "AppStartedNotification"
 
 //IDS and Keys
 public let kFILEREFERENCE = "gs://what-s-app-clone-a77c9.appspot.com/"
-public let kONESIGNALAPPID = ""
+public let kONESIGNALAPPID = "1cd23343-25fe-403a-8592-e2d238e806ad"
 public let kSINCHKEY = ""
 public let kSINCHSECRET = ""
 public let kAPPURL = ""
