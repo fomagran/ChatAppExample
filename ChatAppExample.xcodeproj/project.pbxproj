@@ -20,6 +20,8 @@
 		0456B22625F71AA1009F84BF /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B22525F71AA1009F84BF /* ProfileTableViewController.swift */; };
 		0456B22C25F721A3009F84BF /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B22B25F721A3009F84BF /* Recent.swift */; };
 		0467E68F260ADBE300C1C416 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0467E68E260ADBE300C1C416 /* PushNotification.swift */; };
+		0467E694260AEAAE00C1C416 /* CallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0467E693260AEAAE00C1C416 /* CallTableViewCell.swift */; };
+		0467E699260AEAF400C1C416 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0467E698260AEAF400C1C416 /* Call.swift */; };
 		046C144C25F9B04C0087FA0C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C144B25F9B04C0087FA0C /* ChatViewController.swift */; };
 		046C145725F9BC480087FA0C /* OutgoingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C145625F9BC480087FA0C /* OutgoingMessage.swift */; };
 		046C145C25F9C29D0087FA0C /* IncomingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C145B25F9C29D0087FA0C /* IncomingMessage.swift */; };
@@ -75,6 +77,8 @@
 		0456B22B25F721A3009F84BF /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		04651326260997AE00FBFF4B /* ChatAppExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatAppExample.entitlements; sourceTree = "<group>"; };
 		0467E68E260ADBE300C1C416 /* PushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
+		0467E693260AEAAE00C1C416 /* CallTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTableViewCell.swift; sourceTree = "<group>"; };
+		0467E698260AEAF400C1C416 /* Call.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
 		046C144B25F9B04C0087FA0C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		046C145625F9BC480087FA0C /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
 		046C145B25F9C29D0087FA0C /* IncomingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessage.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 			children = (
 				0456B20E25F70462009F84BF /* UserTableViewCell.swift */,
 				041830AD25F862B100C0EB68 /* RecentChatTableViewCell.swift */,
+				0467E693260AEAAE00C1C416 /* CallTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 				042F83C626005409009071A7 /* Download.swift */,
 				042F83CE26005F75009071A7 /* PhotoMediaItem.swift */,
 				0433A6092601A89700682546 /* VideoMessage.swift */,
+				0467E698260AEAF400C1C416 /* Call.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -520,6 +526,7 @@
 				0456B22125F70EEA009F84BF /* ChattingRoomViewController.swift in Sources */,
 				04DA075125F0836600DE6232 /* RegisterViewController.swift in Sources */,
 				0456B20F25F70462009F84BF /* UserTableViewCell.swift in Sources */,
+				0467E699260AEAF400C1C416 /* Call.swift in Sources */,
 				04B147EE25EF36E30072442C /* AppDelegate.swift in Sources */,
 				0498DBB425EF3B5000C8212D /* FcollectionRefrence.swift in Sources */,
 				042F83CF26005F75009071A7 /* PhotoMediaItem.swift in Sources */,
@@ -527,6 +534,7 @@
 				04C52B9C25F5CB3600DA44F5 /* SettingTableViewController.swift in Sources */,
 				046C144C25F9B04C0087FA0C /* ChatViewController.swift in Sources */,
 				04B147F025EF36E30072442C /* SceneDelegate.swift in Sources */,
+				0467E694260AEAAE00C1C416 /* CallTableViewCell.swift in Sources */,
 				0433A60A2601A89700682546 /* VideoMessage.swift in Sources */,
 				041830AE25F862B100C0EB68 /* RecentChatTableViewCell.swift in Sources */,
 				0456B21C25F70A21009F84BF /* UserTableViewController.swift in Sources */,
