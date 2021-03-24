@@ -19,6 +19,7 @@
 		0456B22125F70EEA009F84BF /* ChattingRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B22025F70EEA009F84BF /* ChattingRoomViewController.swift */; };
 		0456B22625F71AA1009F84BF /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B22525F71AA1009F84BF /* ProfileTableViewController.swift */; };
 		0456B22C25F721A3009F84BF /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456B22B25F721A3009F84BF /* Recent.swift */; };
+		0467E68F260ADBE300C1C416 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0467E68E260ADBE300C1C416 /* PushNotification.swift */; };
 		046C144C25F9B04C0087FA0C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C144B25F9B04C0087FA0C /* ChatViewController.swift */; };
 		046C145725F9BC480087FA0C /* OutgoingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C145625F9BC480087FA0C /* OutgoingMessage.swift */; };
 		046C145C25F9C29D0087FA0C /* IncomingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C145B25F9C29D0087FA0C /* IncomingMessage.swift */; };
@@ -73,6 +74,7 @@
 		0456B22525F71AA1009F84BF /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		0456B22B25F721A3009F84BF /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		04651326260997AE00FBFF4B /* ChatAppExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatAppExample.entitlements; sourceTree = "<group>"; };
+		0467E68E260ADBE300C1C416 /* PushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
 		046C144B25F9B04C0087FA0C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		046C145625F9BC480087FA0C /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
 		046C145B25F9C29D0087FA0C /* IncomingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessage.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				0498DBB825EF3C0000C8212D /* Constants.swift */,
 				0498DBBD25EF3CD700C8212D /* HelperFunctions.swift */,
 				0456B21625F7068E009F84BF /* HelperExtensions.swift */,
+				0467E68E260ADBE300C1C416 /* PushNotification.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 			files = (
 				0456B22625F71AA1009F84BF /* ProfileTableViewController.swift in Sources */,
 				0498DBBE25EF3CD700C8212D /* HelperFunctions.swift in Sources */,
+				0467E68F260ADBE300C1C416 /* PushNotification.swift in Sources */,
 				0456B21725F7068E009F84BF /* HelperExtensions.swift in Sources */,
 				04B147F225EF36E30072442C /* LoginViewController.swift in Sources */,
 				0498DBAF25EF398E00C8212D /* FUser.swift in Sources */,

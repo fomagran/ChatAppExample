@@ -12,12 +12,11 @@ import OneSignal
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver{
-    
+
     var window: UIWindow?
     var locationManager:CLLocationManager?
     var coordinates:CLLocationCoordinate2D?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
@@ -27,7 +26,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver{
         OneSignal.initWithLaunchOptions(launchOptions)
         OneSignal.setAppId(kONESIGNALAPPID)
         
-        startOneSignal()
+        
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+            
+            let userID = OneSignal.getDeviceState()!.userId
+            let pushToken = OneSignal.getDeviceState()!.pushToken
+            
+            if pushToken != nil {
+                if let playerID = userID {
+                    UserDefaults.standard.set(playerID,forKey: kPUSHID)
+                }else {
+                    UserDefaults.standard.removeObject(forKey: kPUSHID)
+                }
+            }
+            UserDefaults.standard.synchronize()
+            updateOneSignalId()
+        })
+
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(USER_DID_LOGIN_NOTIFICATION),object: nil,queue: nil) { (notification) in
+            let userId = notification.userInfo![kUSERID] as! String
+            UserDefaults.standard.set(userId, forKey: kUSERID)
+            UserDefaults.standard.synchronize()
+        }
+        
         return true
     }
 
@@ -82,19 +103,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver{
            })
        }
     
-    //MARK: OneSignal
-    
-
-    
-    func onOSSubscriptionChanged(_ stateChanges: OSSubscriptionStateChanges!) {
-         if !stateChanges.from.isSubscribed && stateChanges.to.isSubscribed {
-            print("Subscribed for OneSignal push notifications!")
-            // get player ID
-            print(stateChanges.to.userId)
-         }
-         print("SubscriptionStateChange: \n\(stateChanges)")
-      }
-
+    func onOSSubscriptionChanged(_ stateChanges: OSSubscriptionStateChanges) {
+        print("?")
+    }
 }
 
 extension AppDelegate:CLLocationManagerDelegate {
