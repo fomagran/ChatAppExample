@@ -27,7 +27,8 @@ class IncomingMessage {
         case kPICTURE:
            message = createPictureMessage(messageDictionary: messageDictionary)
         case kVIDEO:
-            message = createVideoMessage(messageDictionary: messageDictionary)
+            print("")
+//            message = createVideoMessage(messageDictionary: messageDictionary)
         case kAUDIO:
            message = createAudioMessage(messageDictionary: messageDictionary)
         case kLOCATION:

@@ -15,7 +15,7 @@ func sendPushNotification(memberToPush:[String],message:String) {
     getMembersToPush(members: updatedMembers) { (userPushIds) in
         let currentUser = FUser.currentUser()!
         
-        OneSignal.postNotification(["contents":["en":"\(currentUser.firstname) \n \(message)","ios_badgeType":"Increase","ios_badgeCount":"1","include_player_ids":userPushIds]])
+        OneSignal.postNotification(["contents":["en":"\(currentUser.firstname) \n \(message)"],"ios_badgeType":"Increase","ios_badgeCount":"1","include_player_ids":userPushIds])
     }
 }
 

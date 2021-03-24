@@ -343,7 +343,7 @@ class ChatViewController: JSQMessagesViewController,UINavigationControllerDelega
         let currentUser = FUser.currentUser()!
         
         if let text = text {
-            outgoingMessage = OutgoingMessage(message: text, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELETED, type: kTEXT)
+            outgoingMessage = OutgoingMessage(message: text, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELIVERED, type: kTEXT)
         }
         
         if let pic = picture {
