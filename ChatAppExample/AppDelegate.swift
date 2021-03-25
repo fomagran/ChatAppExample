@@ -104,7 +104,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver{
        }
     
     func onOSSubscriptionChanged(_ stateChanges: OSSubscriptionStateChanges) {
-        print("?")
     }
 }
 

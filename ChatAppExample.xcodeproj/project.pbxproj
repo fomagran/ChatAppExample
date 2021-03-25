@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0409028C260C2382007A0167 /* CallTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409028B260C2382007A0167 /* CallTableViewController.swift */; };
 		041830AE25F862B100C0EB68 /* RecentChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041830AD25F862B100C0EB68 /* RecentChatTableViewCell.swift */; };
 		042BB1EF260830D900DE030D /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042BB1EE260830D900DE030D /* AudioViewController.swift */; };
 		042F83C2260050D6009071A7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F83C1260050D6009071A7 /* Camera.swift */; };
@@ -63,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0409028B260C2382007A0167 /* CallTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTableViewController.swift; sourceTree = "<group>"; };
+		04090290260C2AE4007A0167 /* ChatAppExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatAppExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		041830AD25F862B100C0EB68 /* RecentChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatTableViewCell.swift; sourceTree = "<group>"; };
 		042BB1EE260830D900DE030D /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		042F83C1260050D6009071A7 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -235,6 +238,7 @@
 				0498DBBD25EF3CD700C8212D /* HelperFunctions.swift */,
 				0456B21625F7068E009F84BF /* HelperExtensions.swift */,
 				0467E68E260ADBE300C1C416 /* PushNotification.swift */,
+				04090290260C2AE4007A0167 /* ChatAppExample-Bridging-Header.h */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -250,6 +254,7 @@
 				0456B22025F70EEA009F84BF /* ChattingRoomViewController.swift */,
 				0456B22525F71AA1009F84BF /* ProfileTableViewController.swift */,
 				042BB1EE260830D900DE030D /* AudioViewController.swift */,
+				0409028B260C2382007A0167 /* CallTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 				TargetAttributes = {
 					04B147E925EF36E30072442C = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 					04B147FF25EF36E50072442C = {
 						CreatedOnToolsVersion = 12.4;
@@ -527,6 +533,7 @@
 				04DA075125F0836600DE6232 /* RegisterViewController.swift in Sources */,
 				0456B20F25F70462009F84BF /* UserTableViewCell.swift in Sources */,
 				0467E699260AEAF400C1C416 /* Call.swift in Sources */,
+				0409028C260C2382007A0167 /* CallTableViewController.swift in Sources */,
 				04B147EE25EF36E30072442C /* AppDelegate.swift in Sources */,
 				0498DBB425EF3B5000C8212D /* FcollectionRefrence.swift in Sources */,
 				042F83CF26005F75009071A7 /* PhotoMediaItem.swift in Sources */,
@@ -719,6 +726,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ChatAppExample/ChatAppExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2F54VR68GM;
@@ -729,6 +737,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fomagran.ChatAppExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ChatAppExample/Helpers/ChatAppExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -740,6 +750,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ChatAppExample/ChatAppExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2F54VR68GM;
@@ -750,6 +761,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fomagran.ChatAppExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ChatAppExample/Helpers/ChatAppExample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

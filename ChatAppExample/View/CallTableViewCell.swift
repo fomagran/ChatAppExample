@@ -24,7 +24,17 @@ class CallTableViewCell: UITableViewCell {
     }
     
     func generateCell(call:Call) {
+        status.text = ""
         
+        if call.callerId == FUser.currentId() {
+            status.text = "Outgoing"
+            name.text = call.withUserFullName
+            profile.image = #imageLiteral(resourceName: "avatarPlaceholder")
+        }else {
+            status.text = "Incoming"
+            name.text = call.callerFullName
+            profile.image = #imageLiteral(resourceName: "avatarPlaceholder")
+        }
     }
 
 }

@@ -60,6 +60,12 @@ class ProfileTableViewController: UITableViewController {
         }
     }
     @IBAction func tapCallButton(_ sender: Any) {
+        
+        let currentUser = FUser.currentUser()!
+        
+        let call = Call(_callerID: currentUser.objectId, _withUserId: user!.objectId, _callerFullName: currentUser.fullname, _withUserFullName: user!.fullname)
+        call.saveCallInBackground()
+        
     }
     
     func setUI() {
