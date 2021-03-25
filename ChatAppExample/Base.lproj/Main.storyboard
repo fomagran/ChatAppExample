@@ -449,16 +449,113 @@
             </objects>
             <point key="canvasLocation" x="4443.4782608695659" y="1059.375"/>
         </scene>
-        <!--View Controller-->
+        <!--Call View Controller-->
         <scene sceneID="iwc-yH-Z3o">
             <objects>
-                <viewController id="Era-FT-gC6" sceneMemberID="viewController">
+                <viewController id="Era-FT-gC6" customClass="CallViewController" customModule="ChatAppExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sbp-1E-0sL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGh-W5-qAt">
+                                <rect key="frame" x="51" y="98" width="41.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exT-VN-TUw">
+                                <rect key="frame" x="51" y="144" width="41.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatarPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="yf6-Jo-m0O">
+                                <rect key="frame" x="87" y="228.5" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="XZ3-bg-rLA"/>
+                                    <constraint firstAttribute="width" constant="240" id="q9N-3P-tAj"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="NAz-2j-lQF">
+                                <rect key="frame" x="20" y="506" width="374" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mtd-dC-hRP">
+                                        <rect key="frame" x="0.0" y="0.0" width="161.5" height="60"/>
+                                        <state key="normal" title="Button" backgroundImage="mute"/>
+                                        <connections>
+                                            <action selector="tapMuteButton:" destination="Era-FT-gC6" eventType="touchUpInside" id="24B-Th-Cir"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sxh-Gt-LBZ">
+                                        <rect key="frame" x="212.5" y="0.0" width="161.5" height="60"/>
+                                        <state key="normal" title="Button" image="speaker"/>
+                                        <connections>
+                                            <action selector="tapSpeakerButton:" destination="Era-FT-gC6" eventType="touchUpInside" id="Otl-tX-YOI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="adj-1B-02F"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="8fm-Hz-7Z0">
+                                <rect key="frame" x="10" y="807" width="394" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1K2-7O-CSK">
+                                        <rect key="frame" x="0.0" y="0.0" width="97.5" height="60"/>
+                                        <state key="normal" title="Button" image="answer"/>
+                                        <connections>
+                                            <action selector="tapCallButton:" destination="Era-FT-gC6" eventType="touchUpInside" id="1Nw-iH-rz3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84N-Fe-24o">
+                                        <rect key="frame" x="148.5" y="0.0" width="97" height="60"/>
+                                        <state key="normal" title="Button" image="hangup"/>
+                                        <connections>
+                                            <action selector="tapEndCallButton:" destination="Era-FT-gC6" eventType="touchUpInside" id="bpM-WB-5JC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNo-38-3g0">
+                                        <rect key="frame" x="296.5" y="0.0" width="97.5" height="60"/>
+                                        <state key="normal" title="Button" image="hangup"/>
+                                        <connections>
+                                            <action selector="tapDeclineButton:" destination="Era-FT-gC6" eventType="touchUpInside" id="yAy-rV-MYk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="kQr-vt-nsG"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="fDN-Im-qeb"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yf6-Jo-m0O" firstAttribute="top" secondItem="exT-VN-TUw" secondAttribute="bottom" constant="64" id="0Js-tg-oNa"/>
+                            <constraint firstItem="exT-VN-TUw" firstAttribute="leading" secondItem="uGh-W5-qAt" secondAttribute="leading" id="6C4-Ae-J7M"/>
+                            <constraint firstItem="8fm-Hz-7Z0" firstAttribute="bottom" secondItem="fDN-Im-qeb" secondAttribute="bottom" constant="5" id="7BB-Ph-6sI"/>
+                            <constraint firstItem="8fm-Hz-7Z0" firstAttribute="centerX" secondItem="fDN-Im-qeb" secondAttribute="centerX" id="K37-5G-gpf"/>
+                            <constraint firstItem="NAz-2j-lQF" firstAttribute="top" secondItem="yf6-Jo-m0O" secondAttribute="bottom" constant="149.5" id="OtG-Uu-Nj6"/>
+                            <constraint firstItem="fDN-Im-qeb" firstAttribute="trailing" secondItem="8fm-Hz-7Z0" secondAttribute="trailing" constant="10" id="Q0z-Rm-Ew7"/>
+                            <constraint firstItem="uGh-W5-qAt" firstAttribute="leading" secondItem="fDN-Im-qeb" secondAttribute="leading" constant="51" id="cst-Su-YwL"/>
+                            <constraint firstItem="uGh-W5-qAt" firstAttribute="top" secondItem="fDN-Im-qeb" secondAttribute="top" constant="54" id="g10-6k-l3A"/>
+                            <constraint firstItem="yf6-Jo-m0O" firstAttribute="centerX" secondItem="fDN-Im-qeb" secondAttribute="centerX" id="hbb-n2-Tkx"/>
+                            <constraint firstItem="NAz-2j-lQF" firstAttribute="leading" secondItem="fDN-Im-qeb" secondAttribute="leading" constant="20" id="jpd-3C-thT"/>
+                            <constraint firstItem="fDN-Im-qeb" firstAttribute="trailing" secondItem="NAz-2j-lQF" secondAttribute="trailing" constant="20" id="nrZ-bV-CiS"/>
+                            <constraint firstItem="exT-VN-TUw" firstAttribute="top" secondItem="uGh-W5-qAt" secondAttribute="bottom" constant="25.5" id="p88-PD-sF3"/>
+                            <constraint firstItem="8fm-Hz-7Z0" firstAttribute="leading" secondItem="fDN-Im-qeb" secondAttribute="leading" constant="10" id="wp8-vm-FYr"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="callButton" destination="1K2-7O-CSK" id="4VE-je-ekY"/>
+                        <outlet property="declineButton" destination="hNo-38-3g0" id="Bx1-7C-LpT"/>
+                        <outlet property="endCallButton" destination="84N-Fe-24o" id="9Mq-ns-DfM"/>
+                        <outlet property="muteButton" destination="Mtd-dC-hRP" id="PdK-0i-9Pz"/>
+                        <outlet property="name" destination="uGh-W5-qAt" id="ahq-pF-1LE"/>
+                        <outlet property="profile" destination="yf6-Jo-m0O" id="VIJ-aZ-B7V"/>
+                        <outlet property="speakerButton" destination="Sxh-Gt-LBZ" id="OGC-4t-cc9"/>
+                        <outlet property="time" destination="exT-VN-TUw" id="qzc-aF-F7z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yAx-RJ-R6Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -737,11 +834,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="answer" width="250.5" height="250.5"/>
         <image name="avatarPlaceholder" width="101" height="101"/>
         <image name="call" width="30" height="30"/>
         <image name="chat" width="25" height="25"/>
+        <image name="hangup" width="249.5" height="249.5"/>
         <image name="message" width="30" height="30"/>
+        <image name="mute" width="250.5" height="250.5"/>
         <image name="settings" width="25" height="25"/>
+        <image name="speaker" width="250" height="250"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

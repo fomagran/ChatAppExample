@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0409028C260C2382007A0167 /* CallTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409028B260C2382007A0167 /* CallTableViewController.swift */; };
 		0409029B260C2BC5007A0167 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0409029A260C2BC5007A0167 /* PushKit.framework */; };
+		040902A0260C3859007A0167 /* CallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409029F260C3859007A0167 /* CallViewController.swift */; };
+		040902A6260C3BA4007A0167 /* ringback.wav in Resources */ = {isa = PBXBuildFile; fileRef = 040902A4260C3BA4007A0167 /* ringback.wav */; };
+		040902A7260C3BA4007A0167 /* incoming.wav in Resources */ = {isa = PBXBuildFile; fileRef = 040902A5260C3BA4007A0167 /* incoming.wav */; };
 		041830AE25F862B100C0EB68 /* RecentChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041830AD25F862B100C0EB68 /* RecentChatTableViewCell.swift */; };
 		042BB1EF260830D900DE030D /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042BB1EE260830D900DE030D /* AudioViewController.swift */; };
 		042F83C2260050D6009071A7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F83C1260050D6009071A7 /* Camera.swift */; };
@@ -68,6 +71,9 @@
 		0409028B260C2382007A0167 /* CallTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTableViewController.swift; sourceTree = "<group>"; };
 		04090290260C2AE4007A0167 /* ChatAppExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatAppExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		0409029A260C2BC5007A0167 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
+		0409029F260C3859007A0167 /* CallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
+		040902A4260C3BA4007A0167 /* ringback.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = ringback.wav; path = ../../../../Downloads/ringtones/ringback.wav; sourceTree = "<group>"; };
+		040902A5260C3BA4007A0167 /* incoming.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = incoming.wav; path = ../../../../Downloads/ringtones/incoming.wav; sourceTree = "<group>"; };
 		041830AD25F862B100C0EB68 /* RecentChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatTableViewCell.swift; sourceTree = "<group>"; };
 		042BB1EE260830D900DE030D /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		042F83C1260050D6009071A7 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -210,6 +216,8 @@
 				04B147F825EF36E50072442C /* LaunchScreen.storyboard */,
 				04B147FB25EF36E50072442C /* Info.plist */,
 				04B1482325EF37900072442C /* GoogleService-Info.plist */,
+				040902A5260C3BA4007A0167 /* incoming.wav */,
+				040902A4260C3BA4007A0167 /* ringback.wav */,
 			);
 			path = ChatAppExample;
 			sourceTree = "<group>";
@@ -258,6 +266,7 @@
 				0456B22525F71AA1009F84BF /* ProfileTableViewController.swift */,
 				042BB1EE260830D900DE030D /* AudioViewController.swift */,
 				0409028B260C2382007A0167 /* CallTableViewController.swift */,
+				0409029F260C3859007A0167 /* CallViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -397,7 +406,9 @@
 			files = (
 				04B147FA25EF36E50072442C /* LaunchScreen.storyboard in Resources */,
 				04B1482425EF37900072442C /* GoogleService-Info.plist in Resources */,
+				040902A6260C3BA4007A0167 /* ringback.wav in Resources */,
 				04B147F725EF36E50072442C /* Assets.xcassets in Resources */,
+				040902A7260C3BA4007A0167 /* incoming.wav in Resources */,
 				04B147F525EF36E30072442C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,6 +547,7 @@
 				0456B22125F70EEA009F84BF /* ChattingRoomViewController.swift in Sources */,
 				04DA075125F0836600DE6232 /* RegisterViewController.swift in Sources */,
 				0456B20F25F70462009F84BF /* UserTableViewCell.swift in Sources */,
+				040902A0260C3859007A0167 /* CallViewController.swift in Sources */,
 				0467E699260AEAF400C1C416 /* Call.swift in Sources */,
 				0409028C260C2382007A0167 /* CallTableViewController.swift in Sources */,
 				04B147EE25EF36E30072442C /* AppDelegate.swift in Sources */,

@@ -46,6 +46,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver{
             UserDefaults.standard.synchronize()
             updateOneSignalId()
         })
+        
+        self.voipRegistration()
+        self.push = Sinch.managedPush(with: .development)
+        self.push.delegate = self
+        self.push.setDesiredPushTypeAutomatically()
 
         NotificationCenter.default.addObserver(forName: NSNotification.Name(USER_DID_LOGIN_NOTIFICATION),object: nil,queue: nil) { (notification) in
             let userId = notification.userInfo![kUSERID] as! String
@@ -231,7 +236,7 @@ extension AppDelegate:PKPushRegistryDelegate {
     }
     
     
-    func voioRegistration() {
+    func voipRegistration() {
         let voipRegistry:PKPushRegistry = PKPushRegistry(queue: DispatchQueue.main)
         voipRegistry.delegate = self
         voipRegistry.desiredPushTypes = [PKPushType.voIP]
