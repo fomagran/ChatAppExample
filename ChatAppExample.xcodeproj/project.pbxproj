@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0409028C260C2382007A0167 /* CallTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409028B260C2382007A0167 /* CallTableViewController.swift */; };
+		0409029B260C2BC5007A0167 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0409029A260C2BC5007A0167 /* PushKit.framework */; };
 		041830AE25F862B100C0EB68 /* RecentChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041830AD25F862B100C0EB68 /* RecentChatTableViewCell.swift */; };
 		042BB1EF260830D900DE030D /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042BB1EE260830D900DE030D /* AudioViewController.swift */; };
 		042F83C2260050D6009071A7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F83C1260050D6009071A7 /* Camera.swift */; };
@@ -66,6 +67,7 @@
 /* Begin PBXFileReference section */
 		0409028B260C2382007A0167 /* CallTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTableViewController.swift; sourceTree = "<group>"; };
 		04090290260C2AE4007A0167 /* ChatAppExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatAppExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		0409029A260C2BC5007A0167 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		041830AD25F862B100C0EB68 /* RecentChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatTableViewCell.swift; sourceTree = "<group>"; };
 		042BB1EE260830D900DE030D /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		042F83C1260050D6009071A7 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D091D39BF7EE222C9429B10E /* Pods_ChatAppExample.framework in Frameworks */,
+				0409029B260C2BC5007A0167 /* PushKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +278,7 @@
 		DAF4E8DEF8A58D9BE6B7001B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0409029A260C2BC5007A0167 /* PushKit.framework */,
 				A68223BE6D27818B66DDC02A /* Pods_ChatAppExample.framework */,
 				E0D4EA744EBED0EFB8E6E9C1 /* Pods_ChatAppExample_ChatAppExampleUITests.framework */,
 				44F7946701B6193F61D87070 /* Pods_ChatAppExampleTests.framework */,

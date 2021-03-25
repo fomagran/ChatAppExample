@@ -22,9 +22,9 @@ public let APP_STARTED_NOTIFICATION = "AppStartedNotification"
 public let kFILEREFERENCE = "gs://what-s-app-clone-a77c9.appspot.com/"
 
 public let kONESIGNALAPPID = "1cd23343-25fe-403a-8592-e2d238e806ad"
-public let kSINCHKEY = ""
+public let kSINCHKEY = "63877049-c8a8-47da-834b-599e146f1348"
 public let kSINCHSECRET = ""
-public let kAPPURL = ""
+public let kAPPURL = "fO/wcdWZ9UmqIKTKuwtx2w=="
 
 
 
