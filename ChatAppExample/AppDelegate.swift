@@ -13,7 +13,7 @@ import PushKit
 
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver{
+class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver,SINClientDelegate,SINCallClientDelegate,SINManagedPushDelegate{
 
     var window: UIWindow?
     var locationManager:CLLocationManager?
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver{
             updateOneSignalId()
         })
         
-        self.voipRegistration()
+        self.voioRegistration()
         self.push = Sinch.managedPush(with: .development)
         self.push.delegate = self
         self.push.setDesiredPushTypeAutomatically()
@@ -116,16 +116,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver{
     func onOSSubscriptionChanged(_ stateChanges: OSSubscriptionStateChanges) {
     }
     
-    func initSinchWithUserId(userId:String) {
+    func initSinchWithUserId(userId: String) {
+        
         if _client == nil {
-            _client = Sinch.client(withApplicationKey: kSINCHKEY, applicationSecret: kSINCHSECRET,environmentHost: "sandbox.sinch.com", userId: userId)
+            
+            _client = Sinch.client(withApplicationKey: kSINCHKEY, applicationSecret: kSINCHSECRET, environmentHost: "sandbox.sinch.com", userId: userId)
             
             _client.delegate = self
             _client.call()?.delegate = self
+            
             _client.setSupportCalling(true)
             _client.enableManagedPushNotifications()
             _client.start()
             _client.startListeningOnActiveConnection()
+            
+            
         }
     }
     
@@ -142,6 +147,107 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver{
             self.push.application(application, didReceiveRemoteNotification: userInfo)
         }
     }
+    
+    //MARK:SINCH DELEGATE
+    
+    func managedPush(_ managedPush: SINManagedPush!, didReceiveIncomingPushWithPayload payload: [AnyHashable : Any]!, forType pushType: String!) {
+        
+        let result = SINPushHelper.queryPushNotificationPayload(payload)
+        
+        if result!.isCall() {
+            print("incoming push payload")
+            self.handleRemoteNotification(userInfo: payload as NSDictionary)
+        }
+    }
+    
+    func handleRemoteNotification(userInfo: NSDictionary) {
+        
+        if _client == nil {
+            let userId = UserDefaults.standard.object(forKey: kUSERID)
+            
+            if userId != nil {
+                self.initSinchWithUserId(userId: userId as! String)
+            }
+        }
+
+        
+        let result = self._client.relayRemotePushNotification(userInfo as? [AnyHashable : Any])
+        
+        if result!.isCall() {
+            print("handle call notification")
+        }
+        
+    }
+
+    func presentMissedCallNotificationWithRemoteUserId(userId: String) {
+        
+        if UIApplication.shared.applicationState == .background {
+            
+            let center = UNUserNotificationCenter.current()
+            
+            let content = UNMutableNotificationContent()
+            content.title = "Missed Call"
+            content.body = "From \(userId)"
+            content.sound = UNNotificationSound.default
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: "ContentIdentifier", content: content, trigger: trigger)
+            
+            center.add(request) { (error) in
+                
+                if error != nil {
+                    print("error on notification", error!.localizedDescription)
+                }
+            }
+        }
+    }
+
+    //MARK: SinchCallClientDelegate
+    
+    func client(_ client: SINCallClient!, willReceiveIncomingCall call: SINCall!) {
+        
+        print("will receive incoming call")
+    }
+
+    func client(_ client: SINCallClient!, didReceiveIncomingCall call: SINCall!) {
+        
+        print("did receive call")
+        
+        //present call view
+        var top = self.window?.rootViewController
+        
+        while (top?.presentedViewController != nil) {
+            top = top?.presentedViewController
+        }
+        
+        let callVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CallVC") as! CallViewController
+        
+        callVC._call = call
+        top?.present(callVC, animated: true, completion: nil)
+    }
+    
+    //MARK:  SinchClintDelegate
+    
+    func clientDidStart(_ client: SINClient!) {
+        print("Sinch did start")
+    }
+    
+    func clientDidStop(_ client: SINClient!) {
+        print("Sinch did stop")
+    }
+    
+    func clientDidFail(_ client: SINClient!, error: Error!) {
+        print("Sinch did fail \(error.localizedDescription)")
+    }
+
+    func voioRegistration() {
+        
+        let voipRegistry: PKPushRegistry = PKPushRegistry(queue: DispatchQueue.main)
+        voipRegistry.delegate = self
+        voipRegistry.desiredPushTypes = [PKPushType.voIP]
+    }
+    
 }
 
 extension AppDelegate:CLLocationManagerDelegate {
@@ -152,94 +258,17 @@ extension AppDelegate:CLLocationManagerDelegate {
     }
 }
 
-extension AppDelegate:SINClientDelegate,SINCallClientDelegate,SINManagedPushDelegate {
-    func clientDidStart(_ client: SINClient!) {
-        print("Sinch did start")
-    }
-    
-    func clientDidStop(_ client: SINClient!) {
-        print("Sinch did stop")
-    }
-    
-    func clientDidFail(_ client: SINClient!, error: Error!) {
-        print("Sinch did fail",error.localizedDescription)
-    }
-    
-    func managedPush(_ managedPush: SINManagedPush!, didReceiveIncomingPushWithPayload payload: [AnyHashable : Any]!, forType pushType: String!) {
-        let result = SINPushHelper.queryPushNotificationPayload(payload)!
-        
-        if result.isCall() {
-            print("incoming push payload")
-        }
-        
-    }
-    
-    func handleRemoteNotification(userInfo:NSDictionary) {
-        if _client == nil {
-            let userId = UserDefaults.standard.object(forKey: kUSERID)
-            
-            if userId != nil {
-                self.initSinchWithUserId(userId: userId as! String)
-            }
-        }
-        
-        let result = self._client.relayRemotePushNotification(userInfo as? [AnyHashable:Any])!
-        
-        if result.isCall() {
-            print("handle call notification")
-        }
-        
-       
-    }
-    
-    func presentMissedCallNotificationWithRemoteUserId(userId:String) {
-        if UIApplication.shared.applicationState == .background {
-            let center = UNUserNotificationCenter.current()
-            let content = UNMutableNotificationContent()
-            content.title = "Missed Call"
-            content.body = "From \(userId)"
-            content.sound = UNNotificationSound.default
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            
-            let request = UNNotificationRequest(identifier: "ContentIdentifier", content: content, trigger: trigger)
-            
-            center.add(request) { (error) in
-                if error != nil {
-                    print(error?.localizedDescription)
-                }
-            }
-        }
-    }
-    
-    func client(_ client: SINCallClient!, willReceiveIncomingCall call: SINCall!) {
-        print("Will receive incoming Call")
-    }
-    
-    func client(_ client: SINCallClient!, didReceiveIncomingCall call: SINCall!) {
-        print("did receive call")
-        
-        var top = self.window?.rootViewController
-        
-        while  top?.presentingViewController != nil {
-            top = top?.presentingViewController
-        }
-    }
-}
-
 extension AppDelegate:PKPushRegistryDelegate {
+    //MARK: PKPushDelegate
+    
     func pushRegistry(_ registry: PKPushRegistry, didUpdate pushCredentials: PKPushCredentials, for type: PKPushType) {
-        <#code#>
+        
     }
     
-    func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, for type: PKPushType, completion: @escaping () -> Void) {
+    func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, for type: PKPushType) {
+        
+        print("did get incoming push")
         self.handleRemoteNotification(userInfo: payload.dictionaryPayload as NSDictionary)
-    }
-    
-    
-    func voipRegistration() {
-        let voipRegistry:PKPushRegistry = PKPushRegistry(queue: DispatchQueue.main)
-        voipRegistry.delegate = self
-        voipRegistry.desiredPushTypes = [PKPushType.voIP]
         
     }
 }

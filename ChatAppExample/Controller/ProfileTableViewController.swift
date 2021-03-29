@@ -18,6 +18,7 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var profileImage: UIImageView!
     
     var user:FUser?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -64,7 +65,9 @@ class ProfileTableViewController: UITableViewController {
         let currentUser = FUser.currentUser()!
         
         let call = Call(_callerID: currentUser.objectId, _withUserId: user!.objectId, _callerFullName: currentUser.fullname, _withUserFullName: user!.fullname)
+        
         call.saveCallInBackground()
+        callUser()
         
     }
     
@@ -98,6 +101,19 @@ class ProfileTableViewController: UITableViewController {
         }else{
             blockButton.setTitle("Block User", for: .normal)
         }
+    }
+    
+    func callClient() -> SINCallClient {
+        return appDelegate._client.call()
+    }
+    
+    func callUser() {
+        let userToCall = user!.objectId
+        let call = callClient().callUser(withId: userToCall)
+        
+        let callVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "CallViewController") as! CallViewController
+        callVC._call = call
+        self.present(callVC, animated: true, completion: nil)
     }
     // MARK: - Table view data source
 

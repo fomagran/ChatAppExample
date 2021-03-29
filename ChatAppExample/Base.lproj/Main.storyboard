@@ -452,7 +452,7 @@
         <!--Call View Controller-->
         <scene sceneID="iwc-yH-Z3o">
             <objects>
-                <viewController id="Era-FT-gC6" customClass="CallViewController" customModule="ChatAppExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CallViewController" id="Era-FT-gC6" customClass="CallViewController" customModule="ChatAppExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sbp-1E-0sL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
